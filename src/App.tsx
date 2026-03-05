@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from 'react';
-import SolariBoard from './SolariBoard';
+import { SplitFlapText, SplitFlapAudioProvider, SplitFlapMuteToggle } from './components/ui/split-flap-text';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { 
@@ -421,33 +421,36 @@ function App() {
       <StickyVIPCard visible={showVIPCard} />
 
       {/* Hero Section */}
-      <section ref={heroRef} className="relative min-h-screen flex items-center pt-16 overflow-hidden">
-        {/* Background Gradient */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#FAFAFA] via-[#F5F5F7] to-[#FAFAFA]" />
-        
-        {/* Decorative Orbs */}
-        <div className="absolute top-1/4 right-1/4 w-[500px] h-[500px] bg-[#0071E3]/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 left-1/4 w-[400px] h-[400px] bg-[#34C759]/5 rounded-full blur-3xl" />
+      <section ref={heroRef} className="relative min-h-screen flex items-center pt-16 overflow-hidden bg-zinc-950">
+        {/* Subtle decorative orbs on dark bg */}
+        <div className="absolute top-1/4 right-1/4 w-[500px] h-[500px] bg-orange-500/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 left-1/4 w-[400px] h-[400px] bg-zinc-700/20 rounded-full blur-3xl" />
 
         <div className="relative z-10 w-full px-6 lg:px-12 py-20">
-          <div className="max-w-4xl mx-auto text-center">
+          <div className="max-w-5xl mx-auto text-center">
             {/* Eyebrow */}
-            <p className="text-xs uppercase tracking-[0.2em] text-[#86868B] mb-6 animate-fade-in">
+            <p className="text-xs uppercase tracking-[0.2em] text-zinc-500 mb-10 animate-fade-in">
               Clube de Importação Premium
             </p>
 
-            {/* Headline — Solari Board */}
-            <div className="mb-6 animate-slide-up flex justify-center">
-              <SolariBoard />
-            </div>
+            {/* Split-Flap Board */}
+            <SplitFlapAudioProvider>
+              <div className="flex flex-col items-center gap-0 animate-slide-up">
+                <SplitFlapText text="PRIME GATE" className="justify-center" />
+                <div className="mt-6 text-2xl md:text-3xl tracking-[0.6em] font-light text-zinc-400 uppercase">
+                  IMPORTS
+                </div>
+                <SplitFlapMuteToggle className="mt-4" />
+              </div>
+            </SplitFlapAudioProvider>
 
             {/* Tagline */}
-            <p className="text-xl sm:text-2xl lg:text-3xl text-[#1D1D1F] font-medium mb-6 animate-slide-up" style={{ animationDelay: '0.1s' }}>
+            <p className="text-xl sm:text-2xl lg:text-3xl text-zinc-200 font-medium mb-6 mt-12 animate-slide-up" style={{ animationDelay: '0.1s' }}>
               O que o varejo tradicional ainda não descobriu, nós já embarcamos.
             </p>
 
             {/* Subheadline */}
-            <p className="text-lg text-[#86868B] max-w-2xl mx-auto mb-10 animate-slide-up" style={{ animationDelay: '0.2s' }}>
+            <p className="text-lg text-zinc-500 max-w-2xl mx-auto mb-10 animate-slide-up" style={{ animationDelay: '0.2s' }}>
               Acesso exclusivo a produtos premium da China. Preços de atacado, logística simplificada, margens reais.
             </p>
 
@@ -457,7 +460,7 @@ function App() {
                 Começar Agora
                 <ArrowRight className="w-5 h-5" />
               </button>
-              <button className="px-8 py-4 bg-white text-[#1D1D1F] font-medium rounded-full border border-[#D2D2D7] hover:border-[#0071E3] hover:text-[#0071E3] transition-all hover:-translate-y-0.5">
+              <button className="px-8 py-4 bg-zinc-800 text-zinc-200 font-medium rounded-full border border-zinc-700 hover:border-zinc-400 hover:text-white transition-all hover:-translate-y-0.5">
                 Ver Produtos
               </button>
             </div>
@@ -465,16 +468,16 @@ function App() {
             {/* Stats */}
             <div className="mt-16 grid grid-cols-3 gap-8 max-w-xl mx-auto animate-slide-up" style={{ animationDelay: '0.4s' }}>
               <div className="text-center">
-                <p className="text-3xl font-bold text-[#1D1D1F]">500+</p>
-                <p className="text-sm text-[#86868B]">Produtos</p>
+                <p className="text-3xl font-bold text-white">500+</p>
+                <p className="text-sm text-zinc-500">Produtos</p>
               </div>
               <div className="text-center">
-                <p className="text-3xl font-bold text-[#1D1D1F]">30%</p>
-                <p className="text-sm text-[#86868B]">Economia</p>
+                <p className="text-3xl font-bold text-white">30%</p>
+                <p className="text-sm text-zinc-500">Economia</p>
               </div>
               <div className="text-center">
-                <p className="text-3xl font-bold text-[#1D1D1F]">200+</p>
-                <p className="text-sm text-[#86868B]">Membros</p>
+                <p className="text-3xl font-bold text-white">200+</p>
+                <p className="text-sm text-zinc-500">Membros</p>
               </div>
             </div>
           </div>

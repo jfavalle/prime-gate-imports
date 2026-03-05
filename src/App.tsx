@@ -1,4 +1,5 @@
 import { useEffect, useState, useRef } from 'react';
+import SolariBoard from './SolariBoard';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { 
@@ -435,10 +436,10 @@ function App() {
               Clube de Importação Premium
             </p>
 
-            {/* Headline */}
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-[#1D1D1F] text-apple-headline mb-6 animate-slide-up">
-              Prime Gate Imports
-            </h1>
+            {/* Headline — Solari Board */}
+            <div className="mb-6 animate-slide-up flex justify-center">
+              <SolariBoard />
+            </div>
 
             {/* Tagline */}
             <p className="text-xl sm:text-2xl lg:text-3xl text-[#1D1D1F] font-medium mb-6 animate-slide-up" style={{ animationDelay: '0.1s' }}>

@@ -396,21 +396,7 @@ function App() {
     setView('home');
   };
 
-  // Render login view
-  if (view === 'login') {
-    return (
-      <LoginView 
-        onLoginSuccess={handleLoginSuccess}
-        onBack={() => setView('home')}
-      />
-    );
-  }
-
-  // Render portal (e-commerce)
-  if (view === 'portal') {
-    return <Portal onLogout={handleLogout} />;
-  }
-
+  // Setup scroll listeners (runs for all views)
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY;
@@ -421,10 +407,11 @@ function App() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // GSAP animations (only for home view)
   useEffect(() => {
-    // GSAP Scroll Animations
+    if (view !== 'home') return;
+
     const ctx = gsap.context(() => {
-      // Animate sections on scroll
       gsap.utils.toArray<HTMLElement>('.animate-section').forEach((section) => {
         gsap.fromTo(section.querySelectorAll('.animate-item'),
           { opacity: 0, y: 30 },
@@ -445,8 +432,24 @@ function App() {
     });
 
     return () => ctx.revert();
-  }, []);
+  }, [view]);
 
+  // Render login view
+  if (view === 'login') {
+    return (
+      <LoginView 
+        onLoginSuccess={handleLoginSuccess}
+        onBack={() => setView('home')}
+      />
+    );
+  }
+
+  // Render portal (e-commerce)
+  if (view === 'portal') {
+    return <Portal onLogout={handleLogout} />;
+  }
+
+  // Render home (landing page)
   return (
     <div className="min-h-screen bg-zinc-900">
       {/* Header */}

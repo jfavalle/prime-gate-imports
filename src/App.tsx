@@ -237,59 +237,6 @@ function Header({ scrolled }: { scrolled: boolean }) {
   );
 }
 
-// Sticky VIP Card Component
-function StickyVIPCard({ visible }: { visible: boolean }) {
-  if (!visible) return null;
-
-  return (
-    <div className="fixed top-20 right-4 lg:right-8 z-40 animate-slide-up">
-      <div className="bg-zinc-800 rounded-2xl p-4 w-[260px] shadow-lg border border-zinc-700">
-        {/* Card Header */}
-        <div className="flex items-center justify-between mb-4">
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg bg-orange-600 flex items-center justify-center">
-              <span className="text-white font-bold text-xs">PG</span>
-            </div>
-            <span className="text-zinc-100 text-sm font-medium">Prime Gate</span>
-          </div>
-          <div className="flex items-center gap-1">
-            <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-            <span className="text-emerald-500 text-[10px]">Online</span>
-          </div>
-        </div>
-
-        {/* Status */}
-        <div className="space-y-3">
-          <div className="flex items-center justify-between">
-            <span className="text-zinc-500 text-xs">Status</span>
-            <span className="text-orange-400 text-xs font-medium">Membro Premium</span>
-          </div>
-          <div className="flex items-center justify-between">
-            <span className="text-zinc-500 text-xs">Volume</span>
-            <span className="text-zinc-300 text-xs font-medium">1m³</span>
-          </div>
-          <div className="flex items-center justify-between">
-            <span className="text-zinc-500 text-xs">Próximo Envio</span>
-            <span className="text-zinc-300 text-xs font-medium">Mar 2026</span>
-          </div>
-        </div>
-
-        {/* Progress */}
-        <div className="mt-4 pt-4 border-t border-zinc-700">
-          <div className="flex items-center justify-between mb-2">
-            <span className="text-zinc-500 text-[10px]">Container 20ft</span>
-            <span className="text-orange-400 text-[10px] font-medium">85% cheio</span>
-          </div>
-          <div className="h-1.5 bg-zinc-800 rounded-full overflow-hidden">
-            <div className="h-full w-[85%] bg-gradient-to-r from-orange-600 to-orange-400 rounded-full" />
-          </div>
-          <p className="text-zinc-600 text-[10px] mt-2">Apenas 5m³ disponíveis</p>
-        </div>
-      </div>
-    </div>
-  );
-}
-
 // Locked Product Card Component
 function LockedProductCard({ product }: { product: Product }) {
   return (
@@ -421,7 +368,6 @@ function PricingCard({
 // Main App Component
 function App() {
   const [scrolled, setScrolled] = useState(false);
-  const [showVIPCard, setShowVIPCard] = useState(false);
   const [isAnnual, setIsAnnual] = useState(true);
   const heroRef = useRef<HTMLDivElement>(null);
 
@@ -429,7 +375,6 @@ function App() {
     const handleScroll = () => {
       const scrollY = window.scrollY;
       setScrolled(scrollY > 50);
-      setShowVIPCard(scrollY > 400);
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -466,9 +411,6 @@ function App() {
     <div className="min-h-screen bg-zinc-900">
       {/* Header */}
       <Header scrolled={scrolled} />
-
-      {/* Sticky VIP Card */}
-      <StickyVIPCard visible={showVIPCard} />
 
       {/* Hero Section */}
       <section ref={heroRef} className="relative min-h-[80vh] flex items-center pt-24 pb-24 overflow-hidden bg-zinc-900">

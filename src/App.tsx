@@ -6,11 +6,38 @@ import {
   Lock, Unlock, Check, ArrowRight, 
   Package, Shield, TrendingUp, Container, 
   Mail, MapPin, Linkedin, Instagram, Menu, X,
-  Headphones, FileCheck, Truck
+  Headphones, FileCheck, Truck, Info
 } from 'lucide-react';
 import './App.css';
 
 gsap.registerPlugin(ScrollTrigger);
+
+// Tooltip Component
+interface TooltipProps {
+  text: string;
+  children?: React.ReactNode;
+}
+
+function Tooltip({ text, children }: TooltipProps) {
+  const [showTooltip, setShowTooltip] = useState(false);
+
+  return (
+    <div className="relative inline-block">
+      <button
+        className="inline-flex items-center justify-center w-5 h-5 ml-1 rounded-full border border-zinc-600 text-zinc-400 hover:text-zinc-200 hover:border-zinc-500 transition-colors"
+        onMouseEnter={() => setShowTooltip(true)}
+        onMouseLeave={() => setShowTooltip(false)}
+      >
+        <Info className="w-3 h-3" />
+      </button>
+      {showTooltip && (
+        <div className="absolute z-50 bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-2 bg-zinc-800 text-zinc-100 text-xs rounded-lg whitespace-nowrap border border-zinc-700 shadow-lg">
+          {text}
+        </div>
+      )}
+    </div>
+  );
+}
 
 // Types
 interface Product {
@@ -75,7 +102,7 @@ const pricingTiers: PricingTier[] = [
       "Acesso ao catálogo",
       "Preços bloqueados",
       "Newsletter semanal",
-      "Sem commitment"
+      "Sem Fidelidade ou Multas"
     ],
     cta: "Criar Conta",
     color: "#71717A"
@@ -91,7 +118,7 @@ const pricingTiers: PricingTier[] = [
       "Fila padrão de shipping",
       "Dashboard básico",
       "Suporte por chat",
-      "Cotações em 24h"
+      "Compra Direta e Imediata"
     ],
     highlighted: true,
     cta: "Escolher Gold",
@@ -121,13 +148,13 @@ const pricingTiers: PricingTier[] = [
     annualPrice: 14990,
     features: [
       "Fast-Pass Priority",
-      "Sourcing Concierge",
+      "Caçador de Produtos Exclusivos",
       "Trend Radar (Vídeos/Research)",
       "3% Cashback",
       "Contrato dedicado",
       "Planejamento estratégico",
       "Acesso antecipado a produtos",
-      "White-glove service"
+      "Atendimento VIP Próximo"
     ],
     cta: "Falar com Consultor",
     color: "#1F2937"
@@ -142,8 +169,8 @@ function Header({ scrolled }: { scrolled: boolean }) {
     <header 
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled 
-          ? 'bg-zinc-950/80 backdrop-blur-md border-b border-zinc-800' 
-          : 'bg-zinc-950/60 backdrop-blur-md border-b border-zinc-800/50'
+          ? 'bg-zinc-900/80 backdrop-blur-md border-b border-zinc-800' 
+          : 'bg-zinc-900/60 backdrop-blur-md border-b border-zinc-800/50'
       }`}
     >
       <div className="w-full px-6 lg:px-12">
@@ -216,7 +243,7 @@ function StickyVIPCard({ visible }: { visible: boolean }) {
 
   return (
     <div className="fixed top-20 right-4 lg:right-8 z-40 animate-slide-up">
-      <div className="bg-zinc-900 rounded-2xl p-4 w-[260px] shadow-lg border border-zinc-700">
+      <div className="bg-zinc-800 rounded-2xl p-4 w-[260px] shadow-lg border border-zinc-700">
         {/* Card Header */}
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-2">
@@ -266,7 +293,7 @@ function StickyVIPCard({ visible }: { visible: boolean }) {
 // Locked Product Card Component
 function LockedProductCard({ product }: { product: Product }) {
   return (
-    <div className="group relative bg-zinc-900 border border-zinc-800 rounded-2xl overflow-hidden hover:border-zinc-700 transition-all duration-500 hover:-translate-y-1">
+    <div className="group relative bg-zinc-800 border border-zinc-700 rounded-2xl overflow-hidden hover:border-zinc-600 transition-all duration-500 hover:-translate-y-1">
       {/* Product Image */}
       <div className="aspect-square bg-zinc-800 p-8 flex items-center justify-center">
         <img 
@@ -313,8 +340,8 @@ function PricingCard({
     <div 
       className={`relative rounded-2xl p-6 lg:p-8 transition-all duration-500 hover:-translate-y-1 border ${
         tier.highlighted 
-          ? 'bg-zinc-900 border-orange-600/50 shadow-lg shadow-orange-600/10' 
-          : 'bg-zinc-900 border-zinc-800 hover:border-zinc-700'
+          ? 'bg-zinc-800 border-orange-600/50 shadow-lg shadow-orange-600/10' 
+          : 'bg-zinc-800 border-zinc-700 hover:border-zinc-600'
       }`}
     >
       {/* Popular Badge */}
@@ -353,12 +380,28 @@ function PricingCard({
 
       {/* Features */}
       <ul className="space-y-3 mb-8">
-        {tier.features.map((feature, i) => (
-          <li key={i} className="flex items-start gap-3">
-            <Check className="w-5 h-5 text-orange-500 flex-shrink-0 mt-0.5" />
-            <span className="text-sm text-zinc-300">{feature}</span>
-          </li>
-        ))}
+        {tier.features.map((feature, i) => {
+          // Add tooltips for Black and Platinum specific features
+          let tooltipText: string | null = null;
+          
+          if (tier.name === "Black") {
+            if (feature === "Fast-Pass Priority") {
+              tooltipText = "Sua carga tem prioridade zero. Você nunca fica para o próximo container, embarca sempre no primeiro disponível.";
+            } else if (feature === "Caçador de Produtos Exclusivos") {
+              tooltipText = "Nossa equipe na China localiza e negocia qualquer produto específico que você desejar, mesmo que não esteja no catálogo.";
+            } else if (feature === "Trend Radar (Vídeos/Research)") {
+              tooltipText = "Acesso a vídeos reais de feiras na China e relatórios de produtos que ainda nem chegaram ao Brasil.";
+            }
+          }
+          
+          return (
+            <li key={i} className="flex items-start gap-2">
+              <Check className="w-5 h-5 text-orange-500 flex-shrink-0 mt-0.5" />
+              <span className="text-sm text-zinc-300">{feature}</span>
+              {tooltipText && <Tooltip text={tooltipText} />}
+            </li>
+          );
+        })}
       </ul>
 
       {/* CTA */}
@@ -420,7 +463,7 @@ function App() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-zinc-950">
+    <div className="min-h-screen bg-zinc-900">
       {/* Header */}
       <Header scrolled={scrolled} />
 
@@ -428,7 +471,7 @@ function App() {
       <StickyVIPCard visible={showVIPCard} />
 
       {/* Hero Section */}
-      <section ref={heroRef} className="relative min-h-[80vh] flex items-center pt-24 pb-24 overflow-hidden bg-zinc-950">
+      <section ref={heroRef} className="relative min-h-[80vh] flex items-center pt-24 pb-24 overflow-hidden bg-zinc-900">
         {/* Subtle decorative orbs on dark bg */}
         <div className="absolute top-1/4 right-1/4 w-[500px] h-[500px] bg-orange-500/5 rounded-full blur-3xl" />
         <div className="absolute bottom-1/4 left-1/4 w-[400px] h-[400px] bg-zinc-700/20 rounded-full blur-3xl" />
@@ -444,7 +487,7 @@ function App() {
             <SplitFlapAudioProvider>
               <div className="flex flex-col items-center gap-0 animate-slide-up">
                 <SplitFlapText text="PRIME GATE" className="justify-center" />
-                <div className="mt-6 text-2xl md:text-3xl tracking-[0.6em] font-light text-zinc-400 uppercase">
+                <div className="mt-8 text-3xl md:text-4xl tracking-[0.5em] font-light text-zinc-200 uppercase letter-spacing">
                   IMPORTS
                 </div>
                 <SplitFlapMuteToggle className="mt-4" />
@@ -493,6 +536,7 @@ function App() {
 
       {/* Value Proposition Section - The 4 Pillars */}
       <section className="py-24 lg:py-32 bg-zinc-950 animate-section">
+        {/* Layered Gray Wrapper */}
         <div className="w-full px-6 lg:px-12">
           <div className="max-w-6xl mx-auto">
             {/* Section Header */}
@@ -531,7 +575,7 @@ function App() {
               ].map((item, i) => (
                 <div 
                   key={i} 
-                  className="bg-zinc-900 border border-zinc-800 rounded-2xl p-6 hover:border-zinc-700 transition-all duration-500 hover:-translate-y-1 animate-item"
+                  className="bg-zinc-800 border border-zinc-700 rounded-2xl p-6 hover:border-zinc-600 transition-all duration-500 hover:-translate-y-1 animate-item"
                 >
                   <div className="w-12 h-12 bg-zinc-800 rounded-xl flex items-center justify-center mb-4">
                     <item.icon className="w-6 h-6 text-orange-500" />
@@ -547,6 +591,7 @@ function App() {
 
       {/* Locked Product Showcase */}
       <section id="produtos" className="py-24 lg:py-32 bg-zinc-950 animate-section">
+        {/* Layered Gray Wrapper */}
         <div className="w-full px-6 lg:px-12">
           <div className="max-w-6xl mx-auto">
             {/* Section Header */}
@@ -583,6 +628,7 @@ function App() {
 
       {/* How It Works Section */}
       <section id="como-funciona" className="py-24 lg:py-32 bg-zinc-950 animate-section">
+        {/* Layered Gray Wrapper */}
         <div className="w-full px-6 lg:px-12">
           <div className="max-w-6xl mx-auto">
             {/* Section Header */}
@@ -609,7 +655,7 @@ function App() {
                     <div className="hidden lg:block absolute top-8 left-full w-full h-[2px] bg-zinc-800" />
                   )}
                   
-                  <div className="bg-zinc-900 border border-zinc-800 rounded-2xl p-8 hover:border-zinc-700 transition-all duration-500 hover:-translate-y-1 h-full">
+                  <div className="bg-zinc-800 border border-zinc-700 rounded-2xl p-8 hover:border-zinc-600 transition-all duration-500 hover:-translate-y-1 h-full">
                     <div className="flex items-center gap-4 mb-6">
                       <div className="w-16 h-16 bg-orange-600 rounded-2xl flex items-center justify-center">
                         <item.icon className="w-8 h-8 text-white" />
@@ -628,6 +674,7 @@ function App() {
 
       {/* Container Radar Section */}
       <section className="py-24 lg:py-32 bg-zinc-950 animate-section">
+        {/* Layered Gray Wrapper */}
         <div className="w-full px-6 lg:px-12">
           <div className="max-w-6xl mx-auto">
             {/* Section Header */}
@@ -670,7 +717,7 @@ function App() {
               ].map((container, i) => (
                 <div 
                   key={i}
-                  className="bg-zinc-900 border border-zinc-800 rounded-xl p-5 hover:border-zinc-700 transition-all duration-500 hover:-translate-y-1 animate-item"
+                  className="bg-zinc-800 border border-zinc-700 rounded-xl p-5 hover:border-zinc-600 transition-all duration-500 hover:-translate-y-1 animate-item"
                 >
                   {/* Container Visual */}
                   <div className={`h-20 rounded-lg bg-gradient-to-r ${container.color} flex items-center justify-center mb-4 border border-white/10`}>
@@ -724,6 +771,7 @@ function App() {
 
       {/* Pricing Section */}
       <section id="precos" className="py-24 lg:py-32 bg-zinc-950 animate-section">
+        {/* Layered Gray Wrapper */}
         <div className="w-full px-6 lg:px-12">
           <div className="max-w-7xl mx-auto">
             {/* Section Header */}

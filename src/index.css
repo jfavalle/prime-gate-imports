@@ -7,14 +7,14 @@
 @layer base {
   :root {
     --font-bebas: 'Bebas Neue', sans-serif;
-    --background: 240 10% 3.9%;
+    --background: 240 10% 8%;
     --foreground: 210 14% 83%;
-    --card: 240 10% 3.9%;
+    --card: 240 10% 8%;
     --card-foreground: 210 14% 83%;
-    --popover: 240 10% 3.9%;
+    --popover: 240 10% 8%;
     --popover-foreground: 210 14% 83%;
     --primary: 0 0% 100%;
-    --primary-foreground: 240 10% 3.9%;
+    --primary-foreground: 240 10% 8%;
     --secondary: 210 9% 31%;
     --secondary-foreground: 210 14% 83%;
     --muted: 210 9% 31%;

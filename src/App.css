@@ -58,14 +58,14 @@ html {
 
 /* Glass effect for header */
 .glass-apple {
-  background: rgba(250, 250, 250, 0.8);
+  background: rgba(18, 18, 24, 0.8);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
 }
 
 /* VIP Card gradient */
 .bg-vip-gradient {
-  background: linear-gradient(135deg, #1D1D1F 0%, #2D2D2F 50%, #1D1D1F 100%);
+  background: linear-gradient(135deg, #18181B 0%, #27272A 50%, #18181B 100%);
 }
 
 /* Apple-style shadows */
@@ -137,14 +137,14 @@ button:active {
 
 /* Focus states */
 *:focus-visible {
-  outline: 2px solid #0071E3;
+  outline: 2px solid #EA580C;
   outline-offset: 2px;
 }
 
 /* Selection color */
 ::selection {
-  background: rgba(0, 113, 227, 0.2);
-  color: #1D1D1F;
+  background: rgba(234, 88, 12, 0.2);
+  color: #F5F5F5;
 }
 
 /* Custom scrollbar */
@@ -153,16 +153,16 @@ button:active {
 }
 
 ::-webkit-scrollbar-track {
-  background: #F5F5F7;
+  background: #18181B;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #D2D2D7;
+  background: #52525B;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #86868B;
+  background: #71717A;
 }
 
 /* Responsive adjustments */

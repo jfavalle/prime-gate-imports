@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-bebas: 'Bebas Neue', sans-serif;
+    --background: 240 10% 8%;
+    --foreground: 210 14% 83%;
+    --card: 240 10% 8%;
+    --card-foreground: 210 14% 83%;
+    --popover: 240 10% 8%;
+    --popover-foreground: 210 14% 83%;
+    --primary: 0 0% 100%;
+    --primary-foreground: 240 10% 8%;
+    --secondary: 210 9% 31%;
+    --secondary-foreground: 210 14% 83%;
+    --muted: 210 9% 31%;
+    --muted-foreground: 210 6% 63%;
+    --accent: 24 90% 50%;
+    --accent-foreground: 210 14% 83%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 210 9% 31%;
+    --input: 210 9% 31%;
+    --ring: 210 14% 83%;
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}

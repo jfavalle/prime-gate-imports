@@ -509,7 +509,7 @@ function App() {
             {/* Stats */}
             <div className="mt-16 grid grid-cols-3 gap-8 max-w-xl mx-auto animate-slide-up" style={{ animationDelay: '0.4s' }}>
               <div className="text-center">
-                <p className="text-3xl font-bold text-zinc-900">500+</p>
+                <p className="text-3xl font-bold text-zinc-900">8.000+</p>
                 <p className="text-sm text-zinc-600">Produtos</p>
               </div>
               <div className="text-center">
@@ -517,7 +517,7 @@ function App() {
                 <p className="text-sm text-zinc-600">Economia</p>
               </div>
               <div className="text-center">
-                <p className="text-3xl font-bold text-zinc-900">200+</p>
+                <p className="text-3xl font-bold text-zinc-900">470+</p>
                 <p className="text-sm text-zinc-600">Membros</p>
               </div>
             </div>

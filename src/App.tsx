@@ -845,32 +845,23 @@ function App() {
                 </div>
               </div>
               <p className="text-sm text-zinc-600 leading-relaxed">
-                Transformando a importação em uma experiência premium e acessível.
+                Transformando a importacao em uma experiencia premium e acessivel.
               </p>
-            </div>
-                  <div className="flex flex-col">
-                    <span className="font-semibold text-white text-sm">Prime Gate</span>
-                    <span className="text-[10px] text-white/50">Imports</span>
-                  </div>
-                </div>
-                <p className="text-zinc-400 text-sm mb-6">
-                  O que o varejo tradicional ainda não descobriu, nós já embarcamos.
-                </p>
-                <div className="flex gap-3">
-                  <a href="#" className="w-10 h-10 bg-zinc-800 rounded-xl flex items-center justify-center hover:bg-orange-600 transition-colors">
-                    <Linkedin className="w-5 h-5 text-zinc-300" />
-                  </a>
-                  <a href="#" className="w-10 h-10 bg-zinc-800 rounded-xl flex items-center justify-center hover:bg-orange-600 transition-colors">
-                    <Instagram className="w-5 h-5 text-zinc-300" />
-                  </a>
-                </div>
+              <div className="flex gap-3 mt-6">
+                <a href="#" className="w-10 h-10 bg-zinc-100 rounded-xl flex items-center justify-center hover:bg-orange-600 hover:text-white transition-colors">
+                  <Linkedin className="w-5 h-5" />
+                </a>
+                <a href="#" className="w-10 h-10 bg-zinc-100 rounded-xl flex items-center justify-center hover:bg-orange-600 hover:text-white transition-colors">
+                  <Instagram className="w-5 h-5" />
+                </a>
               </div>
+            </div>
 
             {/* Links */}
             {[
-              { title: 'Produto', links: ['Acervo', 'Preços', 'Como Funciona'] },
+              { title: 'Produto', links: ['Acervo', 'Precos', 'Como Funciona'] },
               { title: 'Empresa', links: ['Sobre', 'Blog', 'Carreiras'] },
-              { title: 'Suporte', links: ['FAQ', 'Contato', 'Documentação'] }
+              { title: 'Suporte', links: ['FAQ', 'Contato', 'Documentacao'] }
             ].map((section, i) => (
               <div key={i}>
                 <h4 className="font-semibold text-zinc-900 mb-4">{section.title}</h4>
@@ -885,48 +876,19 @@ function App() {
                 </ul>
               </div>
             ))}
-                </ul>
-              </div>
+          </div>
 
-              <div>
-                <h4 className="text-white font-semibold mb-4">Empresa</h4>
-                <ul className="space-y-3">
-                  {['Sobre Nós', 'Carreiras', 'Blog', 'Contato'].map((item) => (
-                    <li key={item}>
-                      <a href="#" className="text-white/50 hover:text-white text-sm transition-colors">{item}</a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              {/* Contact */}
-              <div>
-                <h4 className="text-white font-semibold mb-4">Contato</h4>
-                <ul className="space-y-3">
-                  <li className="flex items-center gap-3">
-                    <Mail className="w-5 h-5 text-orange-500" />
-                    <span className="text-zinc-400 text-sm">contato@primegateimports.com.br</span>
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <MapPin className="w-5 h-5 text-orange-500" />
-                    <span className="text-zinc-400 text-sm">São Paulo / SP</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            {/* Bottom */}
-            <div className="pt-8 border-t border-zinc-800 flex flex-col md:flex-row justify-between items-center gap-4">
-              <p className="text-zinc-600 text-sm">
-                © 2026 Prime Gate Imports. Todos os direitos reservados.
-              </p>
-              <div className="flex gap-6">
-                {['Termos', 'Privacidade', 'Cookies'].map((item) => (
-                  <a key={item} href="#" className="text-zinc-600 hover:text-zinc-300 text-sm transition-colors">
-                    {item}
-                  </a>
-                ))}
-              </div>
+          {/* Bottom */}
+          <div className="pt-8 border-t border-zinc-200 flex flex-col md:flex-row justify-between items-center gap-4">
+            <p className="text-zinc-600 text-sm">
+              © 2026 Prime Gate Imports. Todos os direitos reservados.
+            </p>
+            <div className="flex gap-6">
+              {['Termos', 'Privacidade', 'Cookies'].map((item) => (
+                <a key={item} href="#" className="text-zinc-600 hover:text-zinc-900 text-sm transition-colors">
+                  {item}
+                </a>
+              ))}
             </div>
           </div>
         </div>

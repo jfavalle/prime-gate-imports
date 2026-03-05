@@ -1,6 +1,7 @@
 import { useEffect, useState, useRef } from 'react';
 import { SplitFlapText, SplitFlapAudioProvider, SplitFlapMuteToggle } from './components/ui/split-flap-text';
 import { Portal } from './pages/Portal';
+import { LoginView } from './pages/LoginView';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { 
@@ -197,18 +198,10 @@ function Header({ scrolled }: { scrolled: boolean }) {
 
           {/* Auth Buttons */}
           <div className="hidden md:flex items-center gap-3">
-            <a 
-              href="/portal"
-              onClick={(e) => {
-                e.preventDefault();
-                setCurrentPage('portal');
-                window.history.pushState({}, '', '/portal');
-              }}
+            <button 
+              onClick={() => setView('login')}
               className="px-4 py-2 text-sm text-zinc-300 hover:text-white transition-colors"
             >
-              Portal
-            </a>
-            <button className="px-4 py-2 text-sm text-zinc-300 hover:text-white transition-colors">
               Login
             </button>
             <button className="px-5 py-2 bg-orange-600 hover:bg-orange-700 text-white text-sm font-medium rounded-full transition-all hover:-translate-y-0.5">
@@ -379,28 +372,34 @@ function PricingCard({
 
 // Main App Component
 function App() {
-  const [currentPage, setCurrentPage] = useState<'home' | 'portal'>(() => {
-    const path = window.location.pathname;
-    return path.includes('/portal') ? 'portal' : 'home';
-  });
+  const [view, setView] = useState<'home' | 'login' | 'dashboard'>('home');
   const [scrolled, setScrolled] = useState(false);
   const [isAnnual, setIsAnnual] = useState(true);
   const heroRef = useRef<HTMLDivElement>(null);
 
-  // Update page when URL changes
-  useEffect(() => {
-    const handlePopState = () => {
-      const path = window.location.pathname;
-      setCurrentPage(path.includes('/portal') ? 'portal' : 'home');
-    };
+  // Handle login success
+  const handleLoginSuccess = () => {
+    setView('dashboard');
+  };
 
-    window.addEventListener('popstate', handlePopState);
-    return () => window.removeEventListener('popstate', handlePopState);
-  }, []);
+  // Handle logout
+  const handleLogout = () => {
+    setView('home');
+  };
 
-  // Route to portal
-  if (currentPage === 'portal') {
-    return <Portal />;
+  // Render login view
+  if (view === 'login') {
+    return (
+      <LoginView 
+        onLoginSuccess={handleLoginSuccess}
+        onBack={() => setView('home')}
+      />
+    );
+  }
+
+  // Render dashboard
+  if (view === 'dashboard') {
+    return <Portal onLogout={handleLogout} />;
   }
 
   useEffect(() => {
@@ -480,11 +479,17 @@ function App() {
 
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center animate-slide-up" style={{ animationDelay: '0.3s' }}>
-              <button className="px-8 py-4 bg-zinc-800 hover:bg-zinc-700 text-white font-medium rounded-full border border-zinc-700 transition-all hover:-translate-y-0.5 flex items-center justify-center gap-2">
+              <button 
+                onClick={() => setView('login')}
+                className="px-8 py-4 bg-zinc-800 hover:bg-zinc-700 text-white font-medium rounded-full border border-zinc-700 transition-all hover:-translate-y-0.5 flex items-center justify-center gap-2"
+              >
                 Começar Agora
                 <ArrowRight className="w-5 h-5" />
               </button>
-              <button className="px-8 py-4 bg-transparent text-zinc-300 font-medium rounded-full border border-zinc-700 hover:border-zinc-500 hover:text-white transition-all hover:-translate-y-0.5">
+              <button 
+                onClick={() => setView('login')}
+                className="px-8 py-4 bg-transparent text-zinc-300 font-medium rounded-full border border-zinc-700 hover:border-zinc-500 hover:text-white transition-all hover:-translate-y-0.5"
+              >
                 Ver Produtos
               </button>
             </div>
@@ -591,7 +596,10 @@ function App() {
             {/* Login CTA */}
             <div className="mt-12 text-center animate-item">
               <p className="text-zinc-400 mb-4">Quer ver todos os produtos e preços?</p>
-              <button className="px-8 py-4 bg-orange-600 hover:bg-orange-700 text-white font-medium rounded-full transition-all hover:-translate-y-0.5 inline-flex items-center gap-2">
+              <button 
+                onClick={() => setView('login')}
+                className="px-8 py-4 bg-orange-600 hover:bg-orange-700 text-white font-medium rounded-full transition-all hover:-translate-y-0.5 inline-flex items-center gap-2"
+              >
                 <Unlock className="w-5 h-5" />
                 Criar Conta Gratuita
               </button>

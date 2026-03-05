@@ -141,44 +141,44 @@ function Header({ scrolled }: { scrolled: boolean }) {
     <header 
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled 
-          ? 'glass-apple border-b border-black/5 shadow-sm' 
-          : 'bg-transparent'
+          ? 'bg-zinc-950/80 backdrop-blur-md border-b border-zinc-800' 
+          : 'bg-zinc-950/60 backdrop-blur-md border-b border-zinc-800/50'
       }`}
     >
       <div className="w-full px-6 lg:px-12">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg bg-[#1D1D1F] flex items-center justify-center">
+            <div className="w-8 h-8 rounded-lg bg-orange-600 flex items-center justify-center">
               <span className="text-white font-bold text-sm">PG</span>
             </div>
             <div className="flex flex-col">
-              <span className="font-semibold text-[#1D1D1F] text-sm leading-tight">Prime Gate</span>
-              <span className="text-[10px] text-[#86868B] leading-tight">Imports</span>
+              <span className="font-semibold text-white text-sm leading-tight">Prime Gate</span>
+              <span className="text-[10px] text-zinc-400 leading-tight">Imports</span>
             </div>
           </div>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8">
-            <a href="#produtos" className="text-sm text-[#1D1D1F] hover:text-[#0071E3] transition-colors">Produtos</a>
-            <a href="#como-funciona" className="text-sm text-[#1D1D1F] hover:text-[#0071E3] transition-colors">Como Funciona</a>
-            <a href="#precos" className="text-sm text-[#1D1D1F] hover:text-[#0071E3] transition-colors">Preços</a>
-            <a href="#faq" className="text-sm text-[#1D1D1F] hover:text-[#0071E3] transition-colors">FAQ</a>
+            <a href="/produtos" className="text-sm text-zinc-300 hover:text-white transition-colors">Produtos</a>
+            <a href="/como-funciona" className="text-sm text-zinc-300 hover:text-white transition-colors">Como Funciona</a>
+            <a href="/precos" className="text-sm text-zinc-300 hover:text-white transition-colors">Preços</a>
+            <a href="/faq" className="text-sm text-zinc-300 hover:text-white transition-colors">FAQ</a>
           </nav>
 
           {/* Auth Buttons */}
           <div className="hidden md:flex items-center gap-3">
-            <button className="px-4 py-2 text-sm text-[#1D1D1F] hover:text-[#0071E3] transition-colors">
+            <button className="px-4 py-2 text-sm text-zinc-300 hover:text-white transition-colors">
               Login
             </button>
-            <button className="px-5 py-2 bg-[#0071E3] hover:bg-[#0077ED] text-white text-sm font-medium rounded-full transition-all hover:-translate-y-0.5">
+            <button className="px-5 py-2 bg-orange-600 hover:bg-orange-700 text-white text-sm font-medium rounded-full transition-all hover:-translate-y-0.5">
               Cadastrar
             </button>
           </div>
 
           {/* Mobile Menu Button */}
           <button 
-            className="md:hidden p-2"
+            className="md:hidden p-2 text-zinc-300"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -187,17 +187,17 @@ function Header({ scrolled }: { scrolled: boolean }) {
 
         {/* Mobile Menu */}
         {mobileMenuOpen && (
-          <div className="md:hidden py-4 border-t border-black/5">
+          <div className="md:hidden py-4 border-t border-zinc-800">
             <nav className="flex flex-col gap-4">
-              <a href="#produtos" className="text-sm text-[#1D1D1F]">Produtos</a>
-              <a href="#como-funciona" className="text-sm text-[#1D1D1F]">Como Funciona</a>
-              <a href="#precos" className="text-sm text-[#1D1D1F]">Preços</a>
-              <a href="#faq" className="text-sm text-[#1D1D1F]">FAQ</a>
-              <div className="flex gap-3 pt-4 border-t border-black/5">
-                <button className="flex-1 px-4 py-2 text-sm text-[#1D1D1F] border border-black/10 rounded-full">
+              <a href="/produtos" className="text-sm text-zinc-300">Produtos</a>
+              <a href="/como-funciona" className="text-sm text-zinc-300">Como Funciona</a>
+              <a href="/precos" className="text-sm text-zinc-300">Preços</a>
+              <a href="/faq" className="text-sm text-zinc-300">FAQ</a>
+              <div className="flex gap-3 pt-4 border-t border-zinc-800">
+                <button className="flex-1 px-4 py-2 text-sm text-zinc-300 border border-zinc-700 rounded-full hover:border-zinc-500">
                   Login
                 </button>
-                <button className="flex-1 px-4 py-2 bg-[#0071E3] text-white text-sm font-medium rounded-full">
+                <button className="flex-1 px-4 py-2 bg-orange-600 hover:bg-orange-700 text-white text-sm font-medium rounded-full">
                   Cadastrar
                 </button>
               </div>
@@ -421,12 +421,12 @@ function App() {
       <StickyVIPCard visible={showVIPCard} />
 
       {/* Hero Section */}
-      <section ref={heroRef} className="relative min-h-screen flex items-center pt-16 overflow-hidden bg-zinc-950">
+      <section ref={heroRef} className="relative min-h-[80vh] flex items-center pt-24 pb-24 overflow-hidden bg-zinc-950">
         {/* Subtle decorative orbs on dark bg */}
         <div className="absolute top-1/4 right-1/4 w-[500px] h-[500px] bg-orange-500/5 rounded-full blur-3xl" />
         <div className="absolute bottom-1/4 left-1/4 w-[400px] h-[400px] bg-zinc-700/20 rounded-full blur-3xl" />
 
-        <div className="relative z-10 w-full px-6 lg:px-12 py-20">
+        <div className="relative z-10 w-full px-6 lg:px-12">
           <div className="max-w-5xl mx-auto text-center">
             {/* Eyebrow */}
             <p className="text-xs uppercase tracking-[0.2em] text-zinc-500 mb-10 animate-fade-in">
@@ -456,11 +456,11 @@ function App() {
 
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center animate-slide-up" style={{ animationDelay: '0.3s' }}>
-              <button className="px-8 py-4 bg-[#0071E3] hover:bg-[#0077ED] text-white font-medium rounded-full transition-all hover:-translate-y-0.5 flex items-center justify-center gap-2">
+              <button className="px-8 py-4 bg-zinc-800 hover:bg-zinc-700 text-white font-medium rounded-full border border-zinc-700 transition-all hover:-translate-y-0.5 flex items-center justify-center gap-2">
                 Começar Agora
                 <ArrowRight className="w-5 h-5" />
               </button>
-              <button className="px-8 py-4 bg-zinc-800 text-zinc-200 font-medium rounded-full border border-zinc-700 hover:border-zinc-400 hover:text-white transition-all hover:-translate-y-0.5">
+              <button className="px-8 py-4 bg-transparent text-zinc-300 font-medium rounded-full border border-zinc-700 hover:border-zinc-500 hover:text-white transition-all hover:-translate-y-0.5">
                 Ver Produtos
               </button>
             </div>

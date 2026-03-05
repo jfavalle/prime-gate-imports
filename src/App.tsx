@@ -26,14 +26,14 @@ function Tooltip({ text, children }: TooltipProps) {
   return (
     <div className="relative inline-block">
       <button
-        className="inline-flex items-center justify-center w-5 h-5 ml-1 rounded-full border border-zinc-600 text-zinc-400 hover:text-zinc-200 hover:border-zinc-500 transition-colors"
+        className="inline-flex items-center justify-center w-5 h-5 ml-1 rounded-full border border-zinc-300 text-zinc-500 hover:text-zinc-700 hover:border-zinc-400 transition-colors"
         onMouseEnter={() => setShowTooltip(true)}
         onMouseLeave={() => setShowTooltip(false)}
       >
         <Info className="w-3 h-3" />
       </button>
       {showTooltip && (
-        <div className="absolute z-50 bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-2 bg-zinc-800 text-zinc-100 text-xs rounded-lg whitespace-nowrap border border-zinc-700 shadow-lg">
+        <div className="absolute z-50 bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-2 bg-zinc-900 text-white text-xs rounded-lg whitespace-nowrap border border-zinc-200 shadow-lg">
           {text}
         </div>
       )}
@@ -171,8 +171,8 @@ function Header({ scrolled, onLogin }: { scrolled: boolean; onLogin: () => void 
     <header 
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled 
-          ? 'bg-zinc-900/80 backdrop-blur-md border-b border-zinc-800' 
-          : 'bg-zinc-900/60 backdrop-blur-md border-b border-zinc-800/50'
+          ? 'bg-white/80 backdrop-blur-md border-b border-zinc-200' 
+          : 'bg-white/60 backdrop-blur-md border-b border-zinc-200/50'
       }`}
     >
       <div className="w-full px-6 lg:px-12">
@@ -183,24 +183,24 @@ function Header({ scrolled, onLogin }: { scrolled: boolean; onLogin: () => void 
               <span className="text-white font-bold text-sm">PG</span>
             </div>
             <div className="flex flex-col">
-              <span className="font-semibold text-white text-sm leading-tight">Prime Gate</span>
-              <span className="text-[10px] text-zinc-400 leading-tight">Imports</span>
+              <span className="font-semibold text-zinc-900 text-sm leading-tight">Prime Gate</span>
+              <span className="text-[10px] text-zinc-600 leading-tight">Imports</span>
             </div>
           </div>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8">
-            <a href="/produtos" className="text-sm text-zinc-300 hover:text-white transition-colors">Produtos</a>
-            <a href="/como-funciona" className="text-sm text-zinc-300 hover:text-white transition-colors">Como Funciona</a>
-            <a href="/precos" className="text-sm text-zinc-300 hover:text-white transition-colors">Preços</a>
-            <a href="/faq" className="text-sm text-zinc-300 hover:text-white transition-colors">FAQ</a>
+            <a href="/produtos" className="text-sm text-zinc-600 hover:text-zinc-900 transition-colors">Produtos</a>
+            <a href="/como-funciona" className="text-sm text-zinc-600 hover:text-zinc-900 transition-colors">Como Funciona</a>
+            <a href="/precos" className="text-sm text-zinc-600 hover:text-zinc-900 transition-colors">Preços</a>
+            <a href="/faq" className="text-sm text-zinc-600 hover:text-zinc-900 transition-colors">FAQ</a>
           </nav>
 
           {/* Auth Buttons */}
           <div className="hidden md:flex items-center gap-3">
             <button 
               onClick={onLogin}
-              className="px-4 py-2 text-sm text-zinc-300 hover:text-white transition-colors"
+              className="px-4 py-2 text-sm text-zinc-600 hover:text-zinc-900 transition-colors"
             >
               Login
             </button>
@@ -214,7 +214,7 @@ function Header({ scrolled, onLogin }: { scrolled: boolean; onLogin: () => void 
 
           {/* Mobile Menu Button */}
           <button 
-            className="md:hidden p-2 text-zinc-300"
+            className="md:hidden p-2 text-zinc-600"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -223,16 +223,16 @@ function Header({ scrolled, onLogin }: { scrolled: boolean; onLogin: () => void 
 
         {/* Mobile Menu */}
         {mobileMenuOpen && (
-          <div className="md:hidden py-4 border-t border-zinc-800">
+          <div className="md:hidden py-4 border-t border-zinc-200">
             <nav className="flex flex-col gap-4">
-              <a href="/produtos" className="text-sm text-zinc-300">Produtos</a>
-              <a href="/como-funciona" className="text-sm text-zinc-300">Como Funciona</a>
-              <a href="/precos" className="text-sm text-zinc-300">Preços</a>
-              <a href="/faq" className="text-sm text-zinc-300">FAQ</a>
-              <div className="flex gap-3 pt-4 border-t border-zinc-800">
+              <a href="/produtos" className="text-sm text-zinc-600">Produtos</a>
+              <a href="/como-funciona" className="text-sm text-zinc-600">Como Funciona</a>
+              <a href="/precos" className="text-sm text-zinc-600">Preços</a>
+              <a href="/faq" className="text-sm text-zinc-600">FAQ</a>
+              <div className="flex gap-3 pt-4 border-t border-zinc-200">
                 <button 
                   onClick={onLogin}
-                  className="flex-1 px-4 py-2 text-sm text-zinc-300 border border-zinc-700 rounded-full hover:border-zinc-500"
+                  className="flex-1 px-4 py-2 text-sm text-zinc-600 border border-zinc-300 rounded-full hover:border-zinc-400"
                 >
                   Login
                 </button>
@@ -254,9 +254,9 @@ function Header({ scrolled, onLogin }: { scrolled: boolean; onLogin: () => void 
 // Locked Product Card Component
 function LockedProductCard({ product }: { product: Product }) {
   return (
-    <div className="group relative bg-zinc-800 border border-zinc-700 rounded-2xl overflow-hidden hover:border-zinc-600 transition-all duration-500 hover:-translate-y-1">
+    <div className="group relative bg-white border border-zinc-200 rounded-2xl overflow-hidden hover:border-zinc-300 hover:shadow-sm transition-all duration-500 hover:-translate-y-1">
       {/* Product Image */}
-      <div className="aspect-square bg-zinc-800 p-8 flex items-center justify-center">
+      <div className="aspect-square bg-zinc-50 p-8 flex items-center justify-center">
         <img 
           src={product.image} 
           alt={product.name}
@@ -266,15 +266,15 @@ function LockedProductCard({ product }: { product: Product }) {
 
       {/* Product Info */}
       <div className="p-6">
-        <span className="text-xs text-zinc-500 uppercase tracking-wide">{product.category}</span>
-        <h3 className="text-lg font-semibold text-zinc-100 mt-1 mb-2">{product.name}</h3>
-        <p className="text-sm text-zinc-400 line-clamp-2">{product.description}</p>
+        <span className="text-xs text-zinc-600 uppercase tracking-wide">{product.category}</span>
+        <h3 className="text-lg font-semibold text-zinc-900 mt-1 mb-2">{product.name}</h3>
+        <p className="text-sm text-zinc-600 line-clamp-2">{product.description}</p>
 
         {/* Locked Price */}
-        <div className="mt-4 pt-4 border-t border-zinc-800">
+        <div className="mt-4 pt-4 border-t border-zinc-200">
           <div className="flex items-center gap-2 mb-3">
             <Lock className="w-4 h-4 text-zinc-500" />
-            <span className="text-sm text-zinc-400">Faça login para ver preços e margens</span>
+            <span className="text-sm text-zinc-600">Faça login para ver preços e margens</span>
           </div>
           <button className="w-full py-3 bg-orange-600 hover:bg-orange-700 text-white rounded-xl text-sm font-medium transition-all duration-300 flex items-center justify-center gap-2">
             <Unlock className="w-4 h-4" />
@@ -301,8 +301,8 @@ function PricingCard({
     <div 
       className={`relative rounded-2xl p-6 lg:p-8 transition-all duration-500 hover:-translate-y-1 border ${
         tier.highlighted 
-          ? 'bg-zinc-800 border-orange-600/50 shadow-lg shadow-orange-600/10' 
-          : 'bg-zinc-800 border-zinc-700 hover:border-zinc-600'
+          ? 'bg-white border-orange-600/30 shadow-sm' 
+          : 'bg-white border-zinc-200 hover:border-zinc-300'
       }`}
     >
       {/* Popular Badge */}
@@ -318,24 +318,24 @@ function PricingCard({
           className="w-3 h-3 rounded-full mb-3"
           style={{ backgroundColor: tier.color }}
         />
-        <h3 className="text-xl font-semibold text-zinc-100">{tier.name}</h3>
-        <p className="text-sm text-zinc-400">{tier.subtitle}</p>
+        <h3 className="text-xl font-semibold text-zinc-900">{tier.name}</h3>
+        <p className="text-sm text-zinc-600">{tier.subtitle}</p>
       </div>
 
       {/* Price */}
       <div className="mb-6">
         {price === 0 ? (
-          <span className="text-3xl font-bold text-zinc-100">Grátis</span>
+          <span className="text-3xl font-bold text-zinc-900">Grátis</span>
         ) : (
           <>
-            <span className="text-3xl font-bold text-zinc-100">
+            <span className="text-3xl font-bold text-zinc-900">
               R$ {price.toLocaleString('pt-BR')}
             </span>
-            <span className="text-zinc-400 ml-1">{period}</span>
+            <span className="text-zinc-600 ml-1">{period}</span>
           </>
         )}
         {isAnnual && price > 0 && (
-          <p className="text-xs text-emerald-400 mt-1">Economize 20%</p>
+          <p className="text-xs text-emerald-600 mt-1">Economize 20%</p>
         )}
       </div>
 
@@ -357,8 +357,8 @@ function PricingCard({
           
           return (
             <li key={i} className="flex items-start gap-2">
-              <Check className="w-5 h-5 text-orange-500 flex-shrink-0 mt-0.5" />
-              <span className="text-sm text-zinc-300">{feature}</span>
+              <Check className="w-5 h-5 text-orange-600 flex-shrink-0 mt-0.5" />
+              <span className="text-sm text-zinc-600">{feature}</span>
               {tooltipText && <Tooltip text={tooltipText} />}
             </li>
           );
@@ -370,7 +370,7 @@ function PricingCard({
         className={`w-full py-3 rounded-xl font-medium transition-all hover:-translate-y-0.5 ${
           tier.highlighted 
             ? 'bg-orange-600 hover:bg-orange-700 text-white' 
-            : 'bg-zinc-800 hover:bg-zinc-700 text-zinc-300 hover:text-white border border-zinc-700'
+            : 'bg-zinc-100 hover:bg-zinc-200 text-zinc-900 border border-zinc-200'
         }`}
       >
         {tier.cta}
@@ -451,20 +451,20 @@ function App() {
 
   // Render home (landing page)
   return (
-    <div className="min-h-screen bg-zinc-900">
+    <div className="min-h-screen bg-white">
       {/* Header */}
       <Header scrolled={scrolled} onLogin={() => setView('login')} />
 
       {/* Hero Section */}
-      <section ref={heroRef} className="relative min-h-[80vh] flex items-center pt-24 pb-24 overflow-hidden bg-zinc-900">
-        {/* Subtle decorative orbs on dark bg */}
+      <section ref={heroRef} className="relative min-h-[80vh] flex items-center pt-24 pb-24 overflow-hidden bg-white">
+        {/* Subtle decorative orbs */}
         <div className="absolute top-1/4 right-1/4 w-[500px] h-[500px] bg-orange-500/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 left-1/4 w-[400px] h-[400px] bg-zinc-700/20 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 left-1/4 w-[400px] h-[400px] bg-zinc-200/20 rounded-full blur-3xl" />
 
         <div className="relative z-10 w-full px-6 lg:px-12">
           <div className="max-w-5xl mx-auto text-center">
             {/* Eyebrow */}
-            <p className="text-xs uppercase tracking-[0.2em] text-zinc-500 mb-10 animate-fade-in">
+            <p className="text-xs uppercase tracking-[0.2em] text-zinc-600 mb-10 animate-fade-in">
               Clube de Importação Premium
             </p>
 
@@ -472,7 +472,7 @@ function App() {
             <SplitFlapAudioProvider>
               <div className="flex flex-col items-center gap-0 animate-slide-up">
                 <SplitFlapText text="PRIME GATE" className="justify-center" />
-                <div className="mt-8 text-3xl md:text-4xl tracking-[0.5em] font-light text-zinc-200 uppercase letter-spacing">
+                <div className="mt-8 text-3xl md:text-4xl tracking-[0.5em] font-light text-zinc-900 uppercase letter-spacing">
                   IMPORTS
                 </div>
                 <SplitFlapMuteToggle className="mt-4" />
@@ -480,12 +480,12 @@ function App() {
             </SplitFlapAudioProvider>
 
             {/* Tagline */}
-            <p className="text-xl sm:text-2xl lg:text-3xl text-zinc-200 font-medium mb-6 mt-12 animate-slide-up" style={{ animationDelay: '0.1s' }}>
+            <p className="text-xl sm:text-2xl lg:text-3xl text-zinc-900 font-medium mb-6 mt-12 animate-slide-up" style={{ animationDelay: '0.1s' }}>
               O que o varejo tradicional ainda não descobriu, nós já embarcamos.
             </p>
 
             {/* Subheadline */}
-            <p className="text-lg text-zinc-500 max-w-2xl mx-auto mb-10 animate-slide-up" style={{ animationDelay: '0.2s' }}>
+            <p className="text-lg text-zinc-600 max-w-2xl mx-auto mb-10 animate-slide-up" style={{ animationDelay: '0.2s' }}>
               Acesso exclusivo a produtos premium da China. Preços de atacado, logística simplificada, margens reais.
             </p>
 
@@ -493,14 +493,14 @@ function App() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center animate-slide-up" style={{ animationDelay: '0.3s' }}>
               <button 
                 onClick={() => setView('login')}
-                className="px-8 py-4 bg-zinc-800 hover:bg-zinc-700 text-white font-medium rounded-full border border-zinc-700 transition-all hover:-translate-y-0.5 flex items-center justify-center gap-2"
+                className="px-8 py-4 bg-zinc-900 hover:bg-zinc-800 text-white font-medium rounded-full border border-zinc-300 transition-all hover:-translate-y-0.5 flex items-center justify-center gap-2"
               >
                 Começar Agora
                 <ArrowRight className="w-5 h-5" />
               </button>
               <button 
                 onClick={() => setView('login')}
-                className="px-8 py-4 bg-transparent text-zinc-300 font-medium rounded-full border border-zinc-700 hover:border-zinc-500 hover:text-white transition-all hover:-translate-y-0.5"
+                className="px-8 py-4 bg-white text-zinc-900 font-medium rounded-full border border-zinc-300 hover:border-zinc-400 hover:bg-zinc-50 transition-all hover:-translate-y-0.5"
               >
                 Ver Produtos
               </button>
@@ -509,16 +509,16 @@ function App() {
             {/* Stats */}
             <div className="mt-16 grid grid-cols-3 gap-8 max-w-xl mx-auto animate-slide-up" style={{ animationDelay: '0.4s' }}>
               <div className="text-center">
-                <p className="text-3xl font-bold text-white">500+</p>
-                <p className="text-sm text-zinc-500">Produtos</p>
+                <p className="text-3xl font-bold text-zinc-900">500+</p>
+                <p className="text-sm text-zinc-600">Produtos</p>
               </div>
               <div className="text-center">
-                <p className="text-3xl font-bold text-white">30%</p>
-                <p className="text-sm text-zinc-500">Economia</p>
+                <p className="text-3xl font-bold text-zinc-900">30%</p>
+                <p className="text-sm text-zinc-600">Economia</p>
               </div>
               <div className="text-center">
-                <p className="text-3xl font-bold text-white">200+</p>
-                <p className="text-sm text-zinc-500">Membros</p>
+                <p className="text-3xl font-bold text-zinc-900">200+</p>
+                <p className="text-sm text-zinc-600">Membros</p>
               </div>
             </div>
           </div>
@@ -526,16 +526,16 @@ function App() {
       </section>
 
       {/* Value Proposition Section - The 4 Pillars */}
-      <section className="py-24 lg:py-32 bg-zinc-950 animate-section">
+      <section className="py-24 lg:py-32 bg-zinc-50 animate-section">
         {/* Layered Gray Wrapper */}
         <div className="w-full px-6 lg:px-12">
           <div className="max-w-6xl mx-auto">
             {/* Section Header */}
             <div className="text-center mb-16 animate-item">
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-zinc-100 mb-4">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-zinc-900 mb-4">
                 Os 4 Pilares
               </h2>
-              <p className="text-lg text-zinc-400 max-w-2xl mx-auto">
+              <p className="text-lg text-zinc-600 max-w-2xl mx-auto">
                 O que diferencia a Prime Gate da importação tradicional.
               </p>
             </div>
@@ -566,13 +566,13 @@ function App() {
               ].map((item, i) => (
                 <div 
                   key={i} 
-                  className="bg-zinc-800 border border-zinc-700 rounded-2xl p-6 hover:border-zinc-600 transition-all duration-500 hover:-translate-y-1 animate-item"
+                  className="bg-white border border-zinc-200 rounded-2xl p-6 hover:border-zinc-300 hover:shadow-sm transition-all duration-500 hover:-translate-y-1 animate-item"
                 >
-                  <div className="w-12 h-12 bg-zinc-800 rounded-xl flex items-center justify-center mb-4">
-                    <item.icon className="w-6 h-6 text-orange-500" />
+                  <div className="w-12 h-12 bg-zinc-100 rounded-xl flex items-center justify-center mb-4">
+                    <item.icon className="w-6 h-6 text-orange-600" />
                   </div>
-                  <h3 className="text-lg font-semibold text-zinc-100 mb-3">{item.title}</h3>
-                  <p className="text-zinc-400 leading-relaxed text-sm">{item.desc}</p>
+                  <h3 className="text-lg font-semibold text-zinc-900 mb-3">{item.title}</h3>
+                  <p className="text-zinc-600 leading-relaxed text-sm">{item.desc}</p>
                 </div>
               ))}
             </div>
@@ -581,18 +581,17 @@ function App() {
       </section>
 
       {/* Locked Product Showcase */}
-      <section id="produtos" className="py-24 lg:py-32 bg-zinc-950 animate-section">
+      <section id="produtos" className="py-24 lg:py-32 bg-white animate-section">
         {/* Layered Gray Wrapper */}
         <div className="w-full px-6 lg:px-12">
           <div className="max-w-6xl mx-auto">
             {/* Section Header */}
             <div className="text-center mb-16 animate-item">
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-zinc-100 mb-4">
-                Catálogo Exclusivo
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-zinc-900 mb-4">
+                Acervo Exclusivo
               </h2>
-              <p className="text-lg text-zinc-400 max-w-2xl mx-auto">
-                Produtos premium selecionados para o mercado brasileiro. 
-                Faça login para desbloquear preços e margens.
+              <p className="text-lg text-zinc-600 max-w-2xl mx-auto">
+                Explore nossos produtos mais procurados. Faça login para ver preços e margens.
               </p>
             </div>
 
@@ -621,17 +620,17 @@ function App() {
       </section>
 
       {/* How It Works Section */}
-      <section id="como-funciona" className="py-24 lg:py-32 bg-zinc-950 animate-section">
+      <section id="como-funciona" className="py-24 lg:py-32 bg-zinc-50 animate-section">
         {/* Layered Gray Wrapper */}
         <div className="w-full px-6 lg:px-12">
           <div className="max-w-6xl mx-auto">
             {/* Section Header */}
             <div className="text-center mb-16 animate-item">
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-zinc-100 mb-4">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-zinc-900 mb-4">
                 Como Funciona
               </h2>
-              <p className="text-lg text-zinc-400 max-w-2xl mx-auto">
-                Quatro passos simples do pedido à entrega.
+              <p className="text-lg text-zinc-600 max-w-2xl mx-auto">
+                Seu jornada desde a descoberta até o seu acervo Premium em 4 passos.
               </p>
             </div>
 
@@ -649,15 +648,15 @@ function App() {
                     <div className="hidden lg:block absolute top-8 left-full w-full h-[2px] bg-zinc-800" />
                   )}
                   
-                  <div className="bg-zinc-800 border border-zinc-700 rounded-2xl p-8 hover:border-zinc-600 transition-all duration-500 hover:-translate-y-1 h-full">
+                  <div className="bg-white border border-zinc-200 rounded-2xl p-8 hover:border-zinc-300 hover:shadow-sm transition-all duration-500 hover:-translate-y-1 h-full">
                     <div className="flex items-center gap-4 mb-6">
                       <div className="w-16 h-16 bg-orange-600 rounded-2xl flex items-center justify-center">
                         <item.icon className="w-8 h-8 text-white" />
                       </div>
-                      <span className="text-4xl font-bold text-zinc-700">{item.step}</span>
+                      <span className="text-4xl font-bold text-orange-600">{item.step}</span>
                     </div>
-                    <h3 className="text-xl font-semibold text-zinc-100 mb-3">{item.title}</h3>
-                    <p className="text-zinc-400 leading-relaxed">{item.desc}</p>
+                    <h3 className="text-xl font-semibold text-zinc-900 mb-3">{item.title}</h3>
+                    <p className="text-zinc-600 leading-relaxed">{item.desc}</p>
                   </div>
                 </div>
               ))}
@@ -667,17 +666,17 @@ function App() {
       </section>
 
       {/* Container Radar Section */}
-      <section className="py-24 lg:py-32 bg-zinc-950 animate-section">
+      <section className="py-24 lg:py-32 bg-white animate-section">
         {/* Layered Gray Wrapper */}
         <div className="w-full px-6 lg:px-12">
           <div className="max-w-6xl mx-auto">
             {/* Section Header */}
             <div className="text-center mb-16 animate-item">
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-zinc-100 mb-4">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-zinc-900 mb-4">
                 Radar de Containers
               </h2>
-              <p className="text-lg text-zinc-400 max-w-2xl mx-auto">
-                Navegue entre os containers em tempo real. Escolha sua rota, seu timing.
+              <p className="text-lg text-zinc-600 max-w-2xl mx-auto">
+                Acompanhe rotas de embarque em tempo real e planeje suas compras.
               </p>
             </div>
 
@@ -711,23 +710,23 @@ function App() {
               ].map((container, i) => (
                 <div 
                   key={i}
-                  className="bg-zinc-800 border border-zinc-700 rounded-xl p-5 hover:border-zinc-600 transition-all duration-500 hover:-translate-y-1 animate-item"
+                  className="bg-white border border-zinc-200 rounded-xl p-5 hover:border-zinc-300 hover:shadow-sm transition-all duration-500 hover:-translate-y-1 animate-item"
                 >
                   {/* Container Visual */}
-                  <div className={`h-20 rounded-lg bg-gradient-to-r ${container.color} flex items-center justify-center mb-4 border border-white/10`}>
+                  <div className={`h-20 rounded-lg bg-gradient-to-r ${container.color} flex items-center justify-center mb-4 border border-black/10`}>
                     <Container className="w-10 h-10 text-white/80" />
                   </div>
                   
                   {/* Route */}
-                  <p className="text-sm font-medium text-zinc-300 mb-3">{container.route}</p>
+                  <p className="text-sm font-medium text-zinc-900 mb-3">{container.route}</p>
                   
                   {/* Occupancy */}
                   <div className="mb-3">
                     <div className="flex justify-between items-center mb-1">
-                      <span className="text-xs text-zinc-500">Ocupação</span>
-                      <span className="text-xs font-semibold text-zinc-300">{container.occupancy}%</span>
+                      <span className="text-xs text-zinc-600">Ocupação</span>
+                      <span className="text-xs font-semibold text-zinc-700">{container.occupancy}%</span>
                     </div>
-                    <div className="h-2 bg-zinc-800 rounded-full overflow-hidden">
+                    <div className="h-2 bg-zinc-200 rounded-full overflow-hidden">
                       <div 
                         className={`h-full bg-gradient-to-r ${container.color} rounded-full`}
                         style={{ width: `${container.occupancy}%` }}
@@ -736,8 +735,8 @@ function App() {
                   </div>
                   
                   {/* Status */}
-                  <div className="pt-3 border-t border-zinc-800">
-                    <span className="text-xs px-2 py-1 rounded-full bg-zinc-800 text-zinc-300">
+                  <div className="pt-3 border-t border-zinc-200">
+                    <span className="text-xs px-2 py-1 rounded-full bg-zinc-100 text-zinc-700">
                       {container.status}
                     </span>
                   </div>
@@ -764,29 +763,29 @@ function App() {
       </section>
 
       {/* Pricing Section */}
-      <section id="precos" className="py-24 lg:py-32 bg-zinc-950 animate-section">
+      <section id="precos" className="py-24 lg:py-32 bg-zinc-50 animate-section">
         {/* Layered Gray Wrapper */}
         <div className="w-full px-6 lg:px-12">
-          <div className="max-w-7xl mx-auto">
+          <div className="max-w-6xl mx-auto">
             {/* Section Header */}
             <div className="text-center mb-12 animate-item">
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-zinc-100 mb-4">
-                Escolha seu Plano
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-zinc-900 mb-4">
+                Planos e Preços
               </h2>
-              <p className="text-lg text-zinc-400 max-w-2xl mx-auto">
-                Planos flexíveis para cada estágio do seu negócio.
+              <p className="text-lg text-zinc-600 max-w-2xl mx-auto mb-8">
+                Escolha o plano perfeito para sua estratégia de importação.
               </p>
             </div>
 
             {/* Billing Toggle */}
             <div className="flex justify-center mb-12 animate-item">
-              <div className="bg-zinc-900 border border-zinc-800 rounded-full p-1 flex items-center">
+              <div className="bg-zinc-100 border border-zinc-200 rounded-full p-1 flex items-center">
                 <button
                   onClick={() => setIsAnnual(false)}
                   className={`px-6 py-2 rounded-full text-sm font-medium transition-all ${
                     !isAnnual 
                       ? 'bg-orange-600 text-white' 
-                      : 'text-zinc-400 hover:text-zinc-300'
+                      : 'text-zinc-600 hover:text-zinc-700'
                   }`}
                 >
                   Mensal
@@ -796,7 +795,7 @@ function App() {
                   className={`px-6 py-2 rounded-full text-sm font-medium transition-all flex items-center gap-2 ${
                     isAnnual 
                       ? 'bg-orange-600 text-white' 
-                      : 'text-zinc-400 hover:text-zinc-300'
+                      : 'text-zinc-600 hover:text-zinc-700'
                   }`}
                 >
                   Anual
@@ -831,85 +830,65 @@ function App() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-black py-16 lg:py-20">
-        <div className="w-full px-6 lg:px-12">
-          <div className="max-w-6xl mx-auto">
-            <div className="grid md:grid-cols-4 gap-12 mb-12">
-              {/* Brand */}
-              <div className="md:col-span-1">
-                <div className="flex items-center gap-2 mb-4">
-                  <div className="w-10 h-10 rounded-xl bg-orange-600 flex items-center justify-center">
-                    <span className="text-white font-bold text-sm">PG</span>
-                  </div>
-                  <div className="flex flex-col">
-                    <span className="font-semibold text-white text-sm">Prime Gate</span>
-                    <span className="text-[10px] text-white/50">Imports</span>
-                  </div>
+      <footer className="bg-white border-t border-zinc-200 px-6 lg:px-12 py-16">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-4 gap-12 mb-12">
+            {/* Company Info */}
+            <div>
+              <div className="flex items-center gap-2 mb-6">
+                <div className="w-8 h-8 rounded-lg bg-orange-600 flex items-center justify-center">
+                  <span className="text-white font-bold text-sm">PG</span>
                 </div>
-                <p className="text-zinc-400 text-sm mb-6">
-                  O que o varejo tradicional ainda não descobriu, nós já embarcamos.
-                </p>
-                <div className="flex gap-3">
-                  <a href="#" className="w-10 h-10 bg-zinc-800 rounded-xl flex items-center justify-center hover:bg-orange-600 transition-colors">
-                    <Linkedin className="w-5 h-5 text-zinc-300" />
-                  </a>
-                  <a href="#" className="w-10 h-10 bg-zinc-800 rounded-xl flex items-center justify-center hover:bg-orange-600 transition-colors">
-                    <Instagram className="w-5 h-5 text-zinc-300" />
-                  </a>
+                <div>
+                  <h3 className="font-semibold text-zinc-900">Prime Gate</h3>
+                  <p className="text-[10px] text-zinc-600">Imports</p>
                 </div>
               </div>
-
-              {/* Links */}
-              <div>
-                <h4 className="text-white font-semibold mb-4">Produto</h4>
-                <ul className="space-y-3">
-                  {['Catálogo', 'Como Funciona', 'Preços', 'FAQ'].map((item) => (
-                    <li key={item}>
-                      <a href="#" className="text-white/50 hover:text-white text-sm transition-colors">{item}</a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <div>
-                <h4 className="text-white font-semibold mb-4">Empresa</h4>
-                <ul className="space-y-3">
-                  {['Sobre Nós', 'Carreiras', 'Blog', 'Contato'].map((item) => (
-                    <li key={item}>
-                      <a href="#" className="text-white/50 hover:text-white text-sm transition-colors">{item}</a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              {/* Contact */}
-              <div>
-                <h4 className="text-white font-semibold mb-4">Contato</h4>
-                <ul className="space-y-3">
-                  <li className="flex items-center gap-3">
-                    <Mail className="w-5 h-5 text-orange-500" />
-                    <span className="text-zinc-400 text-sm">contato@primegateimports.com.br</span>
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <MapPin className="w-5 h-5 text-orange-500" />
-                    <span className="text-zinc-400 text-sm">São Paulo / SP</span>
-                  </li>
-                </ul>
+              <p className="text-sm text-zinc-600 leading-relaxed">
+                Transformando a importacao em uma experiencia premium e acessivel.
+              </p>
+              <div className="flex gap-3 mt-6">
+                <a href="#" className="w-10 h-10 bg-zinc-100 rounded-xl flex items-center justify-center hover:bg-orange-600 hover:text-white transition-colors">
+                  <Linkedin className="w-5 h-5" />
+                </a>
+                <a href="#" className="w-10 h-10 bg-zinc-100 rounded-xl flex items-center justify-center hover:bg-orange-600 hover:text-white transition-colors">
+                  <Instagram className="w-5 h-5" />
+                </a>
               </div>
             </div>
 
-            {/* Bottom */}
-            <div className="pt-8 border-t border-zinc-800 flex flex-col md:flex-row justify-between items-center gap-4">
-              <p className="text-zinc-600 text-sm">
-                © 2026 Prime Gate Imports. Todos os direitos reservados.
-              </p>
-              <div className="flex gap-6">
-                {['Termos', 'Privacidade', 'Cookies'].map((item) => (
-                  <a key={item} href="#" className="text-zinc-600 hover:text-zinc-300 text-sm transition-colors">
-                    {item}
-                  </a>
-                ))}
+            {/* Links */}
+            {[
+              { title: 'Produto', links: ['Acervo', 'Precos', 'Como Funciona'] },
+              { title: 'Empresa', links: ['Sobre', 'Blog', 'Carreiras'] },
+              { title: 'Suporte', links: ['FAQ', 'Contato', 'Documentacao'] }
+            ].map((section, i) => (
+              <div key={i}>
+                <h4 className="font-semibold text-zinc-900 mb-4">{section.title}</h4>
+                <ul className="space-y-2">
+                  {section.links.map((link, j) => (
+                    <li key={j}>
+                      <a href="#" className="text-sm text-zinc-600 hover:text-zinc-900 transition-colors">
+                        {link}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
               </div>
+            ))}
+          </div>
+
+          {/* Bottom */}
+          <div className="pt-8 border-t border-zinc-200 flex flex-col md:flex-row justify-between items-center gap-4">
+            <p className="text-zinc-600 text-sm">
+              © 2026 Prime Gate Imports. Todos os direitos reservados.
+            </p>
+            <div className="flex gap-6">
+              {['Termos', 'Privacidade', 'Cookies'].map((item) => (
+                <a key={item} href="#" className="text-zinc-600 hover:text-zinc-900 text-sm transition-colors">
+                  {item}
+                </a>
+              ))}
             </div>
           </div>
         </div>

@@ -22,17 +22,17 @@ export function LoginView({ onLoginSuccess, onBack }: LoginViewProps) {
   };
 
   return (
-    <div className="min-h-screen bg-zinc-900 flex items-center justify-center p-6">
+    <div className="min-h-screen bg-white flex items-center justify-center p-6">
       {/* Background blur effect */}
-      <div className="absolute inset-0 bg-gradient-to-br from-orange-600/5 to-zinc-950/50 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-br from-orange-600/5 to-white/50 pointer-events-none" />
 
       {/* Login Card */}
       <div className="relative w-full max-w-md">
-        <div className="bg-zinc-900/80 backdrop-blur-xl border border-zinc-800 rounded-2xl p-8 shadow-2xl">
+        <div className="bg-white/80 backdrop-blur-xl border border-zinc-200 rounded-2xl p-8 shadow-sm">
           {/* Header */}
           <div className="text-center mb-8">
-            <h1 className="text-3xl font-bold text-zinc-100 mb-2">Portal do Membro</h1>
-            <p className="text-zinc-400">Acesso exclusivo ao acervo premium</p>
+            <h1 className="text-3xl font-bold text-zinc-900 mb-2">Portal do Membro</h1>
+            <p className="text-zinc-600">Acesso exclusivo ao acervo premium</p>
           </div>
 
           {/* Form */}
@@ -46,7 +46,7 @@ export function LoginView({ onLoginSuccess, onBack }: LoginViewProps) {
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="seu@email.com"
                 required
-                className="w-full bg-zinc-800/50 border border-zinc-700 rounded-lg pl-10 pr-4 py-3 text-zinc-100 placeholder-zinc-500 focus:outline-none focus:border-orange-600/50 focus:ring-1 focus:ring-orange-600/30 transition-all"
+                className="w-full bg-zinc-50 border border-zinc-300 rounded-lg pl-10 pr-4 py-3 text-zinc-900 placeholder-zinc-500 focus:outline-none focus:border-orange-600/50 focus:ring-1 focus:ring-orange-600/30 transition-all"
               />
             </div>
 
@@ -59,7 +59,7 @@ export function LoginView({ onLoginSuccess, onBack }: LoginViewProps) {
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="Sua senha"
                 required
-                className="w-full bg-zinc-800/50 border border-zinc-700 rounded-lg pl-10 pr-4 py-3 text-zinc-100 placeholder-zinc-500 focus:outline-none focus:border-orange-600/50 focus:ring-1 focus:ring-orange-600/30 transition-all"
+                className="w-full bg-zinc-50 border border-zinc-300 rounded-lg pl-10 pr-4 py-3 text-zinc-900 placeholder-zinc-500 focus:outline-none focus:border-orange-600/50 focus:ring-1 focus:ring-orange-600/30 transition-all"
               />
             </div>
 
@@ -86,17 +86,17 @@ export function LoginView({ onLoginSuccess, onBack }: LoginViewProps) {
           {/* Divider */}
           <div className="relative my-6">
             <div className="absolute inset-0 flex items-center">
-              <div className="w-full border-t border-zinc-700" />
+              <div className="w-full border-t border-zinc-200" />
             </div>
             <div className="relative flex justify-center text-sm">
-              <span className="px-3 bg-zinc-900/80 text-zinc-500">Novo por aqui?</span>
+              <span className="px-3 bg-white/80 text-zinc-600">Novo por aqui?</span>
             </div>
           </div>
 
           {/* Sign Up Link */}
-          <p className="text-center text-zinc-400 text-sm mb-6">
+          <p className="text-center text-zinc-600 text-sm mb-6">
             Não tem uma conta?{' '}
-            <button className="text-orange-500 hover:text-orange-400 font-medium transition-colors">
+            <button className="text-orange-600 hover:text-orange-700 font-medium transition-colors">
               Cadastre-se agora
             </button>
           </p>
@@ -104,7 +104,7 @@ export function LoginView({ onLoginSuccess, onBack }: LoginViewProps) {
           {/* Back Button */}
           <button
             onClick={onBack}
-            className="w-full py-2 border border-zinc-700 text-zinc-400 hover:text-zinc-300 rounded-lg transition-colors text-sm font-medium"
+            className="w-full py-2 border border-zinc-200 text-zinc-600 hover:text-zinc-900 rounded-lg transition-colors text-sm font-medium"
           >
             Voltar
           </button>
@@ -112,7 +112,7 @@ export function LoginView({ onLoginSuccess, onBack }: LoginViewProps) {
 
         {/* Decorative elements */}
         <div className="absolute -top-40 -right-40 w-80 h-80 bg-orange-600/10 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-zinc-800/20 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-zinc-200/20 rounded-full blur-3xl pointer-events-none" />
       </div>
     </div>
   );

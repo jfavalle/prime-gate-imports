@@ -75,9 +75,9 @@ export function Portal({ onLogout }: PortalProps) {
   const [selectedCategory, setSelectedCategory] = useState('automacao');
 
   return (
-    <div className="min-h-screen bg-zinc-900">
+    <div className="min-h-screen bg-white">
       {/* Header */}
-      <header className="sticky top-0 z-40 bg-zinc-900/95 backdrop-blur-md border-b border-zinc-800">
+      <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-zinc-200">
         <div className="w-full px-6 lg:px-12">
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
@@ -85,7 +85,7 @@ export function Portal({ onLogout }: PortalProps) {
               <div className="w-8 h-8 rounded-lg bg-orange-600 flex items-center justify-center">
                 <span className="text-white font-bold text-xs">PG</span>
               </div>
-              <span className="font-semibold text-zinc-100 text-sm">Prime Gate</span>
+              <span className="font-semibold text-zinc-900 text-sm">Prime Gate</span>
             </div>
 
             {/* Search Bar - Center */}
@@ -95,7 +95,7 @@ export function Portal({ onLogout }: PortalProps) {
                 <input
                   type="text"
                   placeholder="Buscar produtos..."
-                  className="w-full pl-10 pr-4 py-2 bg-zinc-800 border border-zinc-700 rounded-lg text-sm text-zinc-100 placeholder-zinc-500 focus:outline-none focus:border-orange-600"
+                  className="w-full pl-10 pr-4 py-2 bg-zinc-50 border border-zinc-300 rounded-lg text-sm text-zinc-900 placeholder-zinc-500 focus:outline-none focus:border-orange-600"
                 />
               </div>
             </div>
@@ -103,32 +103,32 @@ export function Portal({ onLogout }: PortalProps) {
             {/* Right Section */}
             <div className="flex items-center gap-4">
               {/* Cashback Widget */}
-              <div className="hidden sm:flex items-center gap-3 px-4 py-2 bg-zinc-800 rounded-lg border border-zinc-700">
+              <div className="hidden sm:flex items-center gap-3 px-4 py-2 bg-zinc-50 rounded-lg border border-zinc-200">
                 <div className="text-right">
-                  <p className="text-xs text-zinc-500">Cashback</p>
-                  <p className="text-sm font-bold text-orange-500">R$ 2.450</p>
+                  <p className="text-xs text-zinc-600">Cashback</p>
+                  <p className="text-sm font-bold text-orange-600">R$ 2.450</p>
                 </div>
               </div>
 
               {/* Notifications */}
-              <button className="p-2 hover:bg-zinc-800 rounded-lg transition-colors relative">
-                <Bell className="w-5 h-5 text-zinc-300" />
+              <button className="p-2 hover:bg-zinc-100 rounded-lg transition-colors relative">
+                <Bell className="w-5 h-5 text-zinc-600" />
                 <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full" />
               </button>
 
               {/* Profile Dropdown */}
-              <div className="flex items-center gap-2 px-3 py-2 hover:bg-zinc-800 rounded-lg transition-colors cursor-pointer">
+              <div className="flex items-center gap-2 px-3 py-2 hover:bg-zinc-100 rounded-lg transition-colors cursor-pointer">
                 <div className="text-right">
-                  <p className="text-xs text-zinc-500">Membro</p>
-                  <p className="text-xs font-semibold text-orange-400">Black</p>
+                  <p className="text-xs text-zinc-600">Membro</p>
+                  <p className="text-xs font-semibold text-orange-600">Black</p>
                 </div>
-                <ChevronDown className="w-4 h-4 text-zinc-400" />
+                <ChevronDown className="w-4 h-4 text-zinc-600" />
               </div>
 
               {/* Logout Button */}
               <button
                 onClick={onLogout}
-                className="p-2 hover:bg-zinc-800 rounded-lg transition-colors text-zinc-300 hover:text-white"
+                className="p-2 hover:bg-zinc-100 rounded-lg transition-colors text-zinc-600 hover:text-zinc-900"
                 title="Sair"
               >
                 <LogOut className="w-5 h-5" />
@@ -137,7 +137,7 @@ export function Portal({ onLogout }: PortalProps) {
           </div>
 
           {/* Categories Menu */}
-          <div className="flex gap-6 pb-4 border-t border-zinc-800/50 pt-4 overflow-x-auto">
+          <div className="flex gap-6 pb-4 border-t border-zinc-200/50 pt-4 overflow-x-auto">
             {[
               { id: 'automacao', label: 'Automação Residencial' },
               { id: 'hospitalidade', label: 'Hospitalidade' },
@@ -150,7 +150,7 @@ export function Portal({ onLogout }: PortalProps) {
                 className={`px-4 py-2 text-sm font-medium whitespace-nowrap rounded-lg transition-colors ${
                   selectedCategory === cat.id
                     ? 'bg-orange-600 text-white'
-                    : 'text-zinc-400 hover:text-zinc-300'
+                    : 'text-zinc-600 hover:text-zinc-900'
                 }`}
               >
                 {cat.label}
@@ -161,7 +161,7 @@ export function Portal({ onLogout }: PortalProps) {
       </header>
 
       {/* Main Content */}
-      <main className="w-full px-6 lg:px-12 py-12">
+      <main className="w-full px-6 lg:px-12 py-12 bg-white">
         {/* Hero Banner */}
         <div className="mb-12 h-64 rounded-xl bg-gradient-to-r from-orange-600 to-orange-500 p-8 flex items-end justify-between overflow-hidden relative">
           <div className="absolute inset-0 opacity-10" style={{
@@ -186,10 +186,10 @@ export function Portal({ onLogout }: PortalProps) {
           {mockProducts.map((product) => (
             <div
               key={product.id}
-              className="bg-zinc-800 border border-zinc-700 rounded-xl overflow-hidden hover:border-zinc-600 transition-all duration-300 hover:-translate-y-1 group"
+              className="bg-white border border-zinc-200 rounded-xl overflow-hidden hover:border-zinc-300 hover:shadow-sm transition-all duration-300 hover:-translate-y-1 group"
             >
               {/* Product Image */}
-              <div className="aspect-square bg-zinc-700 overflow-hidden relative">
+              <div className="aspect-square bg-zinc-100 overflow-hidden relative">
                 <img
                   src={product.image}
                   alt={product.name}
@@ -199,12 +199,12 @@ export function Portal({ onLogout }: PortalProps) {
 
               {/* Product Info */}
               <div className="p-4 space-y-3">
-                <h3 className="text-sm font-semibold text-zinc-100 line-clamp-2 h-10">
+                <h3 className="text-sm font-semibold text-zinc-900 line-clamp-2 h-10">
                   {product.name}
                 </h3>
 
                 {/* MOQ & Volume */}
-                <div className="flex items-center justify-between text-xs text-zinc-400 pb-2 border-b border-zinc-700">
+                <div className="flex items-center justify-between text-xs text-zinc-600 pb-2 border-b border-zinc-200">
                   <span>MOQ: {product.moq} un</span>
                   <span>Vol: {product.volume}m³</span>
                 </div>
@@ -212,16 +212,16 @@ export function Portal({ onLogout }: PortalProps) {
                 {/* Pricing */}
                 <div className="space-y-1">
                   <div className="flex items-baseline gap-2">
-                    <span className="text-xs text-zinc-500">Varejo BR:</span>
-                    <span className="text-xs line-through text-zinc-500">
+                    <span className="text-xs text-zinc-600">Varejo BR:</span>
+                    <span className="text-xs line-through text-zinc-600">
                       R$ {product.suggestedPrice.toLocaleString('pt-BR')}
                     </span>
                   </div>
                   <div className="flex items-baseline gap-2">
-                    <span className="text-lg font-bold text-orange-500">
+                    <span className="text-lg font-bold text-orange-600">
                       R$ {product.memberPrice.toLocaleString('pt-BR')}
                     </span>
-                    <span className="text-xs text-zinc-500">Preço Membro</span>
+                    <span className="text-xs text-zinc-600">Preço Membro</span>
                   </div>
                 </div>
 
@@ -236,23 +236,23 @@ export function Portal({ onLogout }: PortalProps) {
       </main>
 
       {/* Container Radar - Sticky Footer */}
-      <footer className="fixed bottom-0 left-0 right-0 bg-zinc-950 border-t border-zinc-800 px-6 lg:px-12 py-4 z-30">
+      <footer className="fixed bottom-0 left-0 right-0 bg-white/90 backdrop-blur-md border-t border-zinc-200 px-6 lg:px-12 py-4 z-30">
         <div className="max-w-full">
-          <p className="text-xs text-zinc-500 mb-3 uppercase tracking-wider">Terminal de Embarque</p>
+          <p className="text-xs text-zinc-600 mb-3 uppercase tracking-wider">Terminal de Embarque</p>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
             {containers.map((container, idx) => (
-              <div key={idx} className="bg-zinc-800 border border-zinc-700 rounded-lg p-3 text-xs">
-                <p className="text-zinc-300 font-semibold mb-1">{container.route}</p>
+              <div key={idx} className="bg-white border border-zinc-200 rounded-lg p-3 text-xs">
+                <p className="text-zinc-900 font-semibold mb-1">{container.route}</p>
                 <div className="flex items-center gap-2 mb-1">
-                  <div className="flex-1 h-1.5 bg-zinc-700 rounded-full overflow-hidden">
+                  <div className="flex-1 h-1.5 bg-zinc-200 rounded-full overflow-hidden">
                     <div
                       className="h-full bg-gradient-to-r from-orange-600 to-orange-400 rounded-full"
                       style={{ width: `${container.occupancy}%` }}
                     />
                   </div>
-                  <span className="text-zinc-400">{container.occupancy}%</span>
+                  <span className="text-zinc-700">{container.occupancy}%</span>
                 </div>
-                <p className="text-zinc-500">{container.status}</p>
+                <p className="text-zinc-600">{container.status}</p>
                 <p className="text-zinc-600 text-[10px] mt-1">ETA: {container.eta}</p>
               </div>
             ))}

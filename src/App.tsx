@@ -6,10 +6,10 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { 
   Lock, Unlock, Check, ArrowRight, 
-  Package, Shield, TrendingUp, Container, 
+  Package, Shield, TrendingUp, 
   Linkedin, Instagram, Menu, X,
-  Headphones, FileCheck, Truck, Info
-} from 'lucide-react';
+  Headphones, Truck, Info
+} from 'lucide-center';
 import './App.css';
 
 gsap.registerPlugin(ScrollTrigger);

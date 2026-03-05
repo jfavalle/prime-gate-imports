@@ -381,14 +381,14 @@ function PricingCard({
 
 // Main App Component
 function App() {
-  const [view, setView] = useState<'home' | 'login' | 'dashboard'>('home');
+  const [view, setView] = useState<'home' | 'login' | 'portal'>('home');
   const [scrolled, setScrolled] = useState(false);
   const [isAnnual, setIsAnnual] = useState(true);
   const heroRef = useRef<HTMLDivElement>(null);
 
   // Handle login success
   const handleLoginSuccess = () => {
-    setView('dashboard');
+    setView('portal');
   };
 
   // Handle logout
@@ -406,8 +406,8 @@ function App() {
     );
   }
 
-  // Render dashboard
-  if (view === 'dashboard') {
+  // Render portal (e-commerce)
+  if (view === 'portal') {
     return <Portal onLogout={handleLogout} />;
   }
 

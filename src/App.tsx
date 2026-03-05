@@ -1,5 +1,6 @@
 import { useEffect, useState, useRef } from 'react';
 import { SplitFlapText, SplitFlapAudioProvider, SplitFlapMuteToggle } from './components/ui/split-flap-text';
+import { Portal } from './pages/Portal';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { 
@@ -196,6 +197,17 @@ function Header({ scrolled }: { scrolled: boolean }) {
 
           {/* Auth Buttons */}
           <div className="hidden md:flex items-center gap-3">
+            <a 
+              href="/portal"
+              onClick={(e) => {
+                e.preventDefault();
+                setCurrentPage('portal');
+                window.history.pushState({}, '', '/portal');
+              }}
+              className="px-4 py-2 text-sm text-zinc-300 hover:text-white transition-colors"
+            >
+              Portal
+            </a>
             <button className="px-4 py-2 text-sm text-zinc-300 hover:text-white transition-colors">
               Login
             </button>
@@ -367,9 +379,29 @@ function PricingCard({
 
 // Main App Component
 function App() {
+  const [currentPage, setCurrentPage] = useState<'home' | 'portal'>(() => {
+    const path = window.location.pathname;
+    return path.includes('/portal') ? 'portal' : 'home';
+  });
   const [scrolled, setScrolled] = useState(false);
   const [isAnnual, setIsAnnual] = useState(true);
   const heroRef = useRef<HTMLDivElement>(null);
+
+  // Update page when URL changes
+  useEffect(() => {
+    const handlePopState = () => {
+      const path = window.location.pathname;
+      setCurrentPage(path.includes('/portal') ? 'portal' : 'home');
+    };
+
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
+
+  // Route to portal
+  if (currentPage === 'portal') {
+    return <Portal />;
+  }
 
   useEffect(() => {
     const handleScroll = () => {

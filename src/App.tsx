@@ -164,7 +164,7 @@ const pricingTiers: PricingTier[] = [
 ];
 
 // Header Component
-function Header({ scrolled }: { scrolled: boolean }) {
+function Header({ scrolled, onLogin }: { scrolled: boolean; onLogin: () => void }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
@@ -199,12 +199,15 @@ function Header({ scrolled }: { scrolled: boolean }) {
           {/* Auth Buttons */}
           <div className="hidden md:flex items-center gap-3">
             <button 
-              onClick={() => setView('login')}
+              onClick={onLogin}
               className="px-4 py-2 text-sm text-zinc-300 hover:text-white transition-colors"
             >
               Login
             </button>
-            <button className="px-5 py-2 bg-orange-600 hover:bg-orange-700 text-white text-sm font-medium rounded-full transition-all hover:-translate-y-0.5">
+            <button 
+              onClick={onLogin}
+              className="px-5 py-2 bg-orange-600 hover:bg-orange-700 text-white text-sm font-medium rounded-full transition-all hover:-translate-y-0.5"
+            >
               Cadastrar
             </button>
           </div>
@@ -227,10 +230,16 @@ function Header({ scrolled }: { scrolled: boolean }) {
               <a href="/precos" className="text-sm text-zinc-300">Preços</a>
               <a href="/faq" className="text-sm text-zinc-300">FAQ</a>
               <div className="flex gap-3 pt-4 border-t border-zinc-800">
-                <button className="flex-1 px-4 py-2 text-sm text-zinc-300 border border-zinc-700 rounded-full hover:border-zinc-500">
+                <button 
+                  onClick={onLogin}
+                  className="flex-1 px-4 py-2 text-sm text-zinc-300 border border-zinc-700 rounded-full hover:border-zinc-500"
+                >
                   Login
                 </button>
-                <button className="flex-1 px-4 py-2 bg-orange-600 hover:bg-orange-700 text-white text-sm font-medium rounded-full">
+                <button 
+                  onClick={onLogin}
+                  className="flex-1 px-4 py-2 bg-orange-600 hover:bg-orange-700 text-white text-sm font-medium rounded-full"
+                >
                   Cadastrar
                 </button>
               </div>
@@ -441,7 +450,7 @@ function App() {
   return (
     <div className="min-h-screen bg-zinc-900">
       {/* Header */}
-      <Header scrolled={scrolled} />
+      <Header scrolled={scrolled} onLogin={() => setView('login')} />
 
       {/* Hero Section */}
       <section ref={heroRef} className="relative min-h-[80vh] flex items-center pt-24 pb-24 overflow-hidden bg-zinc-900">

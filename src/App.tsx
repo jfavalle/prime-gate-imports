@@ -67,69 +67,70 @@ const products: Product[] = [
 // Pricing Data
 const pricingTiers: PricingTier[] = [
   {
-    name: "Prata",
-    subtitle: "Para começar",
-    monthlyPrice: 99,
-    annualPrice: 950,
+    name: "Guest",
+    subtitle: "Catálogo Protegido",
+    monthlyPrice: 0,
+    annualPrice: 0,
     features: [
-      "Matching básico de fornecedores",
-      "Suporte por email",
-      "Cotações em até 48h",
-      "Newsletter mensal",
-      "Acesso ao catálogo"
+      "Acesso ao catálogo",
+      "Preços bloqueados",
+      "Newsletter semanal",
+      "Sem commitment"
     ],
-    cta: "Começar",
-    color: "#C0C0C0"
+    cta: "Criar Conta",
+    color: "#71717A"
   },
   {
-    name: "Ouro",
-    subtitle: "Mais popular",
-    monthlyPrice: 249,
-    annualPrice: 2390,
+    name: "Gold",
+    subtitle: "Comprador Ativo",
+    monthlyPrice: 199,
+    annualPrice: 1990,
     features: [
-      "Matching prioritário",
+      "Preços abertos",
+      "Mínimo 1m³",
+      "Fila padrão de shipping",
+      "Dashboard básico",
       "Suporte por chat",
-      "Cotações em 24h",
-      "Container compartilhado",
-      "Dashboard de rastreamento",
-      "Relatórios mensais"
+      "Cotações em 24h"
     ],
     highlighted: true,
-    cta: "Escolher Ouro",
-    color: "#D4AF37"
+    cta: "Escolher Gold",
+    color: "#F59E0B"
   },
   {
-    name: "Platina",
-    subtitle: "Para escalar",
+    name: "Platinum",
+    subtitle: "Escalador Premium",
     monthlyPrice: 599,
-    annualPrice: 5750,
+    annualPrice: 5990,
     features: [
+      "Janelas de shipping selecionáveis",
+      "Catálogos exclusivos",
+      "Mínimo 1.5m³",
+      "1.5% Cashback",
       "Agente dedicado",
-      "Suporte 24/7",
-      "Cotações instantâneas",
-      "Prioridade de container",
-      "Revisões mensais",
-      "Relatórios customizados",
-      "Descontos em volume"
+      "Suporte prioritário 24/7",
+      "Relatórios customizados"
     ],
-    cta: "Escolher Platina",
-    color: "#E5E4E2"
+    cta: "Escolher Platinum",
+    color: "#8B5CF6"
   },
   {
     name: "Black",
-    subtitle: "Enterprise",
-    monthlyPrice: 999,
-    annualPrice: 9590,
+    subtitle: "Concierge Elite",
+    monthlyPrice: 1499,
+    annualPrice: 14990,
     features: [
-      "Linhas privadas de fornecedores",
-      "Serviço white-glove",
-      "Contratos customizados",
-      "Descontos corporativos",
+      "Fast-Pass Priority",
+      "Sourcing Concierge",
+      "Trend Radar (Vídeos/Research)",
+      "3% Cashback",
+      "Contrato dedicado",
       "Planejamento estratégico",
-      "Acesso antecipado a produtos"
+      "Acesso antecipado a produtos",
+      "White-glove service"
     ],
-    cta: "Falar com Vendas",
-    color: "#1D1D1F"
+    cta: "Falar com Consultor",
+    color: "#1F2937"
   }
 ];
 
@@ -215,47 +216,47 @@ function StickyVIPCard({ visible }: { visible: boolean }) {
 
   return (
     <div className="fixed top-20 right-4 lg:right-8 z-40 animate-slide-up">
-      <div className="bg-vip-gradient rounded-2xl p-4 w-[260px] shadow-apple-elevated border border-white/10">
+      <div className="bg-zinc-900 rounded-2xl p-4 w-[260px] shadow-lg border border-zinc-700">
         {/* Card Header */}
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#D4AF37] to-[#B8941F] flex items-center justify-center">
+            <div className="w-8 h-8 rounded-lg bg-orange-600 flex items-center justify-center">
               <span className="text-white font-bold text-xs">PG</span>
             </div>
-            <span className="text-white/90 text-sm font-medium">Prime Gate</span>
+            <span className="text-zinc-100 text-sm font-medium">Prime Gate</span>
           </div>
           <div className="flex items-center gap-1">
-            <div className="w-2 h-2 rounded-full bg-[#34C759] animate-pulse" />
-            <span className="text-[#34C759] text-[10px]">Online</span>
+            <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+            <span className="text-emerald-500 text-[10px]">Online</span>
           </div>
         </div>
 
         {/* Status */}
         <div className="space-y-3">
           <div className="flex items-center justify-between">
-            <span className="text-white/50 text-xs">Status</span>
-            <span className="text-[#D4AF37] text-xs font-medium">Membro Premium</span>
+            <span className="text-zinc-500 text-xs">Status</span>
+            <span className="text-orange-400 text-xs font-medium">Membro Premium</span>
           </div>
           <div className="flex items-center justify-between">
-            <span className="text-white/50 text-xs">Volume</span>
-            <span className="text-white text-xs font-medium">1m³</span>
+            <span className="text-zinc-500 text-xs">Volume</span>
+            <span className="text-zinc-300 text-xs font-medium">1m³</span>
           </div>
           <div className="flex items-center justify-between">
-            <span className="text-white/50 text-xs">Próximo Envio</span>
-            <span className="text-white text-xs font-medium">Mar 2026</span>
+            <span className="text-zinc-500 text-xs">Próximo Envio</span>
+            <span className="text-zinc-300 text-xs font-medium">Mar 2026</span>
           </div>
         </div>
 
         {/* Progress */}
-        <div className="mt-4 pt-4 border-t border-white/10">
+        <div className="mt-4 pt-4 border-t border-zinc-700">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-white/50 text-[10px]">Container 20ft</span>
-            <span className="text-[#0071E3] text-[10px] font-medium">85% cheio</span>
+            <span className="text-zinc-500 text-[10px]">Container 20ft</span>
+            <span className="text-orange-400 text-[10px] font-medium">85% cheio</span>
           </div>
-          <div className="h-1.5 bg-white/10 rounded-full overflow-hidden">
-            <div className="h-full w-[85%] bg-gradient-to-r from-[#0071E3] to-[#42A5F5] rounded-full" />
+          <div className="h-1.5 bg-zinc-800 rounded-full overflow-hidden">
+            <div className="h-full w-[85%] bg-gradient-to-r from-orange-600 to-orange-400 rounded-full" />
           </div>
-          <p className="text-white/40 text-[10px] mt-2">Apenas 5m³ disponíveis</p>
+          <p className="text-zinc-600 text-[10px] mt-2">Apenas 5m³ disponíveis</p>
         </div>
       </div>
     </div>
@@ -265,9 +266,9 @@ function StickyVIPCard({ visible }: { visible: boolean }) {
 // Locked Product Card Component
 function LockedProductCard({ product }: { product: Product }) {
   return (
-    <div className="group relative bg-white rounded-3xl overflow-hidden shadow-apple-card hover:shadow-apple-hover transition-all duration-500 hover:-translate-y-1">
+    <div className="group relative bg-zinc-900 border border-zinc-800 rounded-2xl overflow-hidden hover:border-zinc-700 transition-all duration-500 hover:-translate-y-1">
       {/* Product Image */}
-      <div className="aspect-square bg-[#F5F5F7] p-8 flex items-center justify-center">
+      <div className="aspect-square bg-zinc-800 p-8 flex items-center justify-center">
         <img 
           src={product.image} 
           alt={product.name}
@@ -277,17 +278,17 @@ function LockedProductCard({ product }: { product: Product }) {
 
       {/* Product Info */}
       <div className="p-6">
-        <span className="text-xs text-[#86868B] uppercase tracking-wide">{product.category}</span>
-        <h3 className="text-lg font-semibold text-[#1D1D1F] mt-1 mb-2">{product.name}</h3>
-        <p className="text-sm text-[#86868B] line-clamp-2">{product.description}</p>
+        <span className="text-xs text-zinc-500 uppercase tracking-wide">{product.category}</span>
+        <h3 className="text-lg font-semibold text-zinc-100 mt-1 mb-2">{product.name}</h3>
+        <p className="text-sm text-zinc-400 line-clamp-2">{product.description}</p>
 
         {/* Locked Price */}
-        <div className="mt-4 pt-4 border-t border-[#F5F5F7]">
+        <div className="mt-4 pt-4 border-t border-zinc-800">
           <div className="flex items-center gap-2 mb-3">
-            <Lock className="w-4 h-4 text-[#86868B]" />
-            <span className="text-sm text-[#86868B]">Faça login para ver preços e margens</span>
+            <Lock className="w-4 h-4 text-zinc-500" />
+            <span className="text-sm text-zinc-400">Faça login para ver preços e margens</span>
           </div>
-          <button className="w-full py-3 bg-[#F5F5F7] hover:bg-[#1D1D1F] text-[#1D1D1F] hover:text-white rounded-xl text-sm font-medium transition-all duration-300 flex items-center justify-center gap-2">
+          <button className="w-full py-3 bg-orange-600 hover:bg-orange-700 text-white rounded-xl text-sm font-medium transition-all duration-300 flex items-center justify-center gap-2">
             <Unlock className="w-4 h-4" />
             Entrar para Ver Preços
           </button>
@@ -310,16 +311,16 @@ function PricingCard({
 
   return (
     <div 
-      className={`relative rounded-3xl p-6 lg:p-8 transition-all duration-500 hover:-translate-y-1 ${
+      className={`relative rounded-2xl p-6 lg:p-8 transition-all duration-500 hover:-translate-y-1 border ${
         tier.highlighted 
-          ? 'bg-white shadow-apple-elevated border-2 border-[#0071E3]' 
-          : 'bg-white shadow-apple-card hover:shadow-apple-hover'
+          ? 'bg-zinc-900 border-orange-600/50 shadow-lg shadow-orange-600/10' 
+          : 'bg-zinc-900 border-zinc-800 hover:border-zinc-700'
       }`}
     >
       {/* Popular Badge */}
       {tier.highlighted && (
-        <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 bg-[#0071E3] rounded-full">
-          <span className="text-white text-xs font-medium">Mais Popular</span>
+        <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 bg-orange-600 rounded-full">
+          <span className="text-white text-xs font-semibold">Mais Popular</span>
         </div>
       )}
 
@@ -329,18 +330,24 @@ function PricingCard({
           className="w-3 h-3 rounded-full mb-3"
           style={{ backgroundColor: tier.color }}
         />
-        <h3 className="text-xl font-semibold text-[#1D1D1F]">{tier.name}</h3>
-        <p className="text-sm text-[#86868B]">{tier.subtitle}</p>
+        <h3 className="text-xl font-semibold text-zinc-100">{tier.name}</h3>
+        <p className="text-sm text-zinc-400">{tier.subtitle}</p>
       </div>
 
       {/* Price */}
       <div className="mb-6">
-        <span className="text-3xl font-bold text-[#1D1D1F]">
-          R$ {price.toLocaleString('pt-BR')}
-        </span>
-        <span className="text-[#86868B]">{period}</span>
-        {isAnnual && (
-          <p className="text-xs text-[#34C759] mt-1">Economize 20%</p>
+        {price === 0 ? (
+          <span className="text-3xl font-bold text-zinc-100">Grátis</span>
+        ) : (
+          <>
+            <span className="text-3xl font-bold text-zinc-100">
+              R$ {price.toLocaleString('pt-BR')}
+            </span>
+            <span className="text-zinc-400 ml-1">{period}</span>
+          </>
+        )}
+        {isAnnual && price > 0 && (
+          <p className="text-xs text-emerald-400 mt-1">Economize 20%</p>
         )}
       </div>
 
@@ -348,8 +355,8 @@ function PricingCard({
       <ul className="space-y-3 mb-8">
         {tier.features.map((feature, i) => (
           <li key={i} className="flex items-start gap-3">
-            <Check className="w-5 h-5 text-[#0071E3] flex-shrink-0 mt-0.5" />
-            <span className="text-sm text-[#1D1D1F]">{feature}</span>
+            <Check className="w-5 h-5 text-orange-500 flex-shrink-0 mt-0.5" />
+            <span className="text-sm text-zinc-300">{feature}</span>
           </li>
         ))}
       </ul>
@@ -358,8 +365,8 @@ function PricingCard({
       <button 
         className={`w-full py-3 rounded-xl font-medium transition-all hover:-translate-y-0.5 ${
           tier.highlighted 
-            ? 'bg-[#0071E3] hover:bg-[#0077ED] text-white' 
-            : 'bg-[#F5F5F7] hover:bg-[#1D1D1F] text-[#1D1D1F] hover:text-white'
+            ? 'bg-orange-600 hover:bg-orange-700 text-white' 
+            : 'bg-zinc-800 hover:bg-zinc-700 text-zinc-300 hover:text-white border border-zinc-700'
         }`}
       >
         {tier.cta}
@@ -413,7 +420,7 @@ function App() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#FAFAFA]">
+    <div className="min-h-screen bg-zinc-950">
       {/* Header */}
       <Header scrolled={scrolled} />
 
@@ -484,48 +491,53 @@ function App() {
         </div>
       </section>
 
-      {/* Value Proposition Section */}
-      <section className="py-24 lg:py-32 animate-section">
+      {/* Value Proposition Section - The 4 Pillars */}
+      <section className="py-24 lg:py-32 bg-zinc-950 animate-section">
         <div className="w-full px-6 lg:px-12">
           <div className="max-w-6xl mx-auto">
             {/* Section Header */}
             <div className="text-center mb-16 animate-item">
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#1D1D1F] text-apple-headline mb-4">
-                Por que importadores escolhem a Prime Gate
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-zinc-100 mb-4">
+                Os 4 Pilares
               </h2>
-              <p className="text-lg text-[#86868B] max-w-2xl mx-auto">
-                Elimine a complexidade. Mantenha as margens.
+              <p className="text-lg text-zinc-400 max-w-2xl mx-auto">
+                O que diferencia a Prime Gate da importação tradicional.
               </p>
             </div>
 
-            {/* Value Cards */}
-            <div className="grid md:grid-cols-3 gap-8">
+            {/* 4 Pillar Cards */}
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               {[
                 { 
-                  icon: Shield, 
-                  title: 'Fornecedores Verificados', 
-                  desc: 'Fábricas auditadas, compliance garantido. Cada parceiro passa por rigoroso processo de verificação.' 
+                  title: 'Curadoria Implacável', 
+                  desc: 'Esqueça o mar de itens genéricos de sites chineses. Nosso acervo tem apenas exclusividades que ninguém traz para o Brasil.',
+                  icon: Shield
                 },
                 { 
-                  icon: TrendingUp, 
-                  title: 'Preços Transparentes', 
-                  desc: 'Sem taxas ocultas. Custo itemizado em cada etapa. Você sabe exatamente onde cada centavo vai.' 
+                  title: 'Compra Direta', 
+                  desc: 'Sem cotações. Viu, gostou, comprou. Preço final na tela e mínimo de 1m³.',
+                  icon: TrendingUp
                 },
                 { 
-                  icon: Package, 
-                  title: 'Logística Integrada', 
-                  desc: 'Do fornecedor à sua porta, rastreado e segurado. Acompanhe cada etapa em tempo real.' 
+                  title: 'Economia na Fonte', 
+                  desc: 'Compre com preço de fábrica para revender ou equipar sua empresa. Transparência total.',
+                  icon: Package
+                },
+                { 
+                  title: 'Sem Custos Escondidos', 
+                  desc: 'Entregamos na sua porta. Cuidamos de 100% da alfândega e frete sem surpresas.',
+                  icon: Truck
                 },
               ].map((item, i) => (
                 <div 
                   key={i} 
-                  className="bg-white rounded-3xl p-8 shadow-apple-card hover:shadow-apple-hover transition-all duration-500 hover:-translate-y-1 animate-item"
+                  className="bg-zinc-900 border border-zinc-800 rounded-2xl p-6 hover:border-zinc-700 transition-all duration-500 hover:-translate-y-1 animate-item"
                 >
-                  <div className="w-14 h-14 bg-[#F5F5F7] rounded-2xl flex items-center justify-center mb-6">
-                    <item.icon className="w-7 h-7 text-[#0071E3]" />
+                  <div className="w-12 h-12 bg-zinc-800 rounded-xl flex items-center justify-center mb-4">
+                    <item.icon className="w-6 h-6 text-orange-500" />
                   </div>
-                  <h3 className="text-xl font-semibold text-[#1D1D1F] mb-3">{item.title}</h3>
-                  <p className="text-[#86868B] leading-relaxed">{item.desc}</p>
+                  <h3 className="text-lg font-semibold text-zinc-100 mb-3">{item.title}</h3>
+                  <p className="text-zinc-400 leading-relaxed text-sm">{item.desc}</p>
                 </div>
               ))}
             </div>
@@ -534,15 +546,15 @@ function App() {
       </section>
 
       {/* Locked Product Showcase */}
-      <section id="produtos" className="py-24 lg:py-32 bg-[#F5F5F7] animate-section">
+      <section id="produtos" className="py-24 lg:py-32 bg-zinc-950 animate-section">
         <div className="w-full px-6 lg:px-12">
           <div className="max-w-6xl mx-auto">
             {/* Section Header */}
             <div className="text-center mb-16 animate-item">
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#1D1D1F] text-apple-headline mb-4">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-zinc-100 mb-4">
                 Catálogo Exclusivo
               </h2>
-              <p className="text-lg text-[#86868B] max-w-2xl mx-auto">
+              <p className="text-lg text-zinc-400 max-w-2xl mx-auto">
                 Produtos premium selecionados para o mercado brasileiro. 
                 Faça login para desbloquear preços e margens.
               </p>
@@ -559,8 +571,8 @@ function App() {
 
             {/* Login CTA */}
             <div className="mt-12 text-center animate-item">
-              <p className="text-[#86868B] mb-4">Quer ver todos os produtos e preços?</p>
-              <button className="px-8 py-4 bg-[#0071E3] hover:bg-[#0077ED] text-white font-medium rounded-full transition-all hover:-translate-y-0.5 inline-flex items-center gap-2">
+              <p className="text-zinc-400 mb-4">Quer ver todos os produtos e preços?</p>
+              <button className="px-8 py-4 bg-orange-600 hover:bg-orange-700 text-white font-medium rounded-full transition-all hover:-translate-y-0.5 inline-flex items-center gap-2">
                 <Unlock className="w-5 h-5" />
                 Criar Conta Gratuita
               </button>
@@ -570,15 +582,15 @@ function App() {
       </section>
 
       {/* How It Works Section */}
-      <section id="como-funciona" className="py-24 lg:py-32 animate-section">
+      <section id="como-funciona" className="py-24 lg:py-32 bg-zinc-950 animate-section">
         <div className="w-full px-6 lg:px-12">
           <div className="max-w-6xl mx-auto">
             {/* Section Header */}
             <div className="text-center mb-16 animate-item">
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#1D1D1F] text-apple-headline mb-4">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-zinc-100 mb-4">
                 Como Funciona
               </h2>
-              <p className="text-lg text-[#86868B] max-w-2xl mx-auto">
+              <p className="text-lg text-zinc-400 max-w-2xl mx-auto">
                 Quatro passos simples do pedido à entrega.
               </p>
             </div>
@@ -594,18 +606,18 @@ function App() {
                 <div key={i} className="relative animate-item">
                   {/* Connector Line */}
                   {i < 3 && (
-                    <div className="hidden lg:block absolute top-8 left-full w-full h-[2px] bg-[#F5F5F7]" />
+                    <div className="hidden lg:block absolute top-8 left-full w-full h-[2px] bg-zinc-800" />
                   )}
                   
-                  <div className="bg-white rounded-3xl p-8 shadow-apple-card hover:shadow-apple-hover transition-all duration-500 hover:-translate-y-1 h-full">
+                  <div className="bg-zinc-900 border border-zinc-800 rounded-2xl p-8 hover:border-zinc-700 transition-all duration-500 hover:-translate-y-1 h-full">
                     <div className="flex items-center gap-4 mb-6">
-                      <div className="w-16 h-16 bg-[#0071E3] rounded-2xl flex items-center justify-center">
+                      <div className="w-16 h-16 bg-orange-600 rounded-2xl flex items-center justify-center">
                         <item.icon className="w-8 h-8 text-white" />
                       </div>
-                      <span className="text-4xl font-bold text-[#F5F5F7]">{item.step}</span>
+                      <span className="text-4xl font-bold text-zinc-700">{item.step}</span>
                     </div>
-                    <h3 className="text-xl font-semibold text-[#1D1D1F] mb-3">{item.title}</h3>
-                    <p className="text-[#86868B] leading-relaxed">{item.desc}</p>
+                    <h3 className="text-xl font-semibold text-zinc-100 mb-3">{item.title}</h3>
+                    <p className="text-zinc-400 leading-relaxed">{item.desc}</p>
                   </div>
                 </div>
               ))}
@@ -614,63 +626,82 @@ function App() {
         </div>
       </section>
 
-      {/* Container Progress Section */}
-      <section className="py-24 lg:py-32 bg-[#1D1D1F] animate-section">
+      {/* Container Radar Section */}
+      <section className="py-24 lg:py-32 bg-zinc-950 animate-section">
         <div className="w-full px-6 lg:px-12">
           <div className="max-w-6xl mx-auto">
             {/* Section Header */}
             <div className="text-center mb-16 animate-item">
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white text-apple-headline mb-4">
-                Container Compartilhado
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-zinc-100 mb-4">
+                Radar de Containers
               </h2>
-              <p className="text-lg text-white/60 max-w-2xl mx-auto">
-                Pague apenas pelo espaço que usar. Acompanhe em tempo real.
+              <p className="text-lg text-zinc-400 max-w-2xl mx-auto">
+                Navegue entre os containers em tempo real. Escolha sua rota, seu timing.
               </p>
             </div>
 
-            {/* Progress Bars */}
-            <div className="grid md:grid-cols-2 gap-8 mb-16">
-              {/* 20ft Container */}
-              <div className="bg-white/5 rounded-3xl p-8 border border-white/10 animate-item">
-                <div className="flex items-center justify-between mb-4">
-                  <div>
-                    <h3 className="text-lg font-semibold text-white">Container 20ft</h3>
-                    <p className="text-sm text-white/50">33m³ capacidade · Entrega mais rápida</p>
+            {/* Container Cards */}
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+              {[
+                { 
+                  route: 'Shenzhen > Santos', 
+                  occupancy: 85, 
+                  status: 'Fechando em 48h',
+                  color: 'from-blue-600 to-blue-400'
+                },
+                { 
+                  route: 'Shanghai > Rio', 
+                  occupancy: 62, 
+                  status: 'Zarpou',
+                  color: 'from-orange-600 to-orange-400'
+                },
+                { 
+                  route: 'Guangzhou > SP', 
+                  occupancy: 71, 
+                  status: 'Aguardando Receita',
+                  color: 'from-emerald-600 to-emerald-400'
+                },
+                { 
+                  route: 'Ningbo > Santos', 
+                  occupancy: 44, 
+                  status: 'Planejando Rota',
+                  color: 'from-purple-600 to-purple-400'
+                },
+              ].map((container, i) => (
+                <div 
+                  key={i}
+                  className="bg-zinc-900 border border-zinc-800 rounded-xl p-5 hover:border-zinc-700 transition-all duration-500 hover:-translate-y-1 animate-item"
+                >
+                  {/* Container Visual */}
+                  <div className={`h-20 rounded-lg bg-gradient-to-r ${container.color} flex items-center justify-center mb-4 border border-white/10`}>
+                    <Container className="w-10 h-10 text-white/80" />
                   </div>
-                  <div className="text-right">
-                    <p className="text-2xl font-bold text-[#0071E3]">85%</p>
-                    <p className="text-xs text-white/50">cheio</p>
+                  
+                  {/* Route */}
+                  <p className="text-sm font-medium text-zinc-300 mb-3">{container.route}</p>
+                  
+                  {/* Occupancy */}
+                  <div className="mb-3">
+                    <div className="flex justify-between items-center mb-1">
+                      <span className="text-xs text-zinc-500">Ocupação</span>
+                      <span className="text-xs font-semibold text-zinc-300">{container.occupancy}%</span>
+                    </div>
+                    <div className="h-2 bg-zinc-800 rounded-full overflow-hidden">
+                      <div 
+                        className={`h-full bg-gradient-to-r ${container.color} rounded-full`}
+                        style={{ width: `${container.occupancy}%` }}
+                      />
+                    </div>
+                  </div>
+                  
+                  {/* Status */}
+                  <div className="pt-3 border-t border-zinc-800">
+                    <span className="text-xs px-2 py-1 rounded-full bg-zinc-800 text-zinc-300">
+                      {container.status}
+                    </span>
                   </div>
                 </div>
-                <div className="h-3 bg-white/10 rounded-full overflow-hidden mb-4">
-                  <div className="h-full w-[85%] bg-gradient-to-r from-[#0071E3] to-[#42A5F5] rounded-full" />
-                </div>
-                <div className="flex items-center justify-between text-sm">
-                  <span className="text-white/50">Envio: Março 2026</span>
-                  <span className="text-[#FF9500]">Apenas 5m³ disponíveis</span>
-                </div>
-              </div>
-
-              {/* 40ft Container */}
-              <div className="bg-white/5 rounded-3xl p-8 border border-white/10 animate-item">
-                <div className="flex items-center justify-between mb-4">
-                  <div>
-                    <h3 className="text-lg font-semibold text-white">Container 40ft</h3>
-                    <p className="text-sm text-white/50">67m³ capacidade · Custo por m³ menor</p>
-                  </div>
-                  <div className="text-right">
-                    <p className="text-2xl font-bold text-[#34C759]">42%</p>
-                    <p className="text-xs text-white/50">cheio</p>
-                  </div>
-                </div>
-                <div className="h-3 bg-white/10 rounded-full overflow-hidden mb-4">
-                  <div className="h-full w-[42%] bg-gradient-to-r from-[#34C759] to-[#30D158] rounded-full" />
-                </div>
-                <div className="flex items-center justify-between text-sm">
-                  <span className="text-white/50">Envio: Abril 2026</span>
-                  <span className="text-[#34C759]">39m³ disponíveis</span>
-                </div>
-              </div>
+              ))}
             </div>
 
             {/* Stats */}
@@ -681,9 +712,9 @@ function App() {
                 { value: '100%', label: 'Seguro', sublabel: 'Cobertura total da carga' },
               ].map((stat, i) => (
                 <div key={i} className="text-center animate-item">
-                  <p className="text-3xl lg:text-4xl font-bold text-white mb-2">{stat.value}</p>
-                  <p className="text-white font-medium mb-1">{stat.label}</p>
-                  <p className="text-white/50 text-sm">{stat.sublabel}</p>
+                  <p className="text-3xl lg:text-4xl font-bold text-zinc-100 mb-2">{stat.value}</p>
+                  <p className="text-zinc-300 font-medium mb-1">{stat.label}</p>
+                  <p className="text-zinc-500 text-sm">{stat.sublabel}</p>
                 </div>
               ))}
             </div>
@@ -692,28 +723,28 @@ function App() {
       </section>
 
       {/* Pricing Section */}
-      <section id="precos" className="py-24 lg:py-32 animate-section">
+      <section id="precos" className="py-24 lg:py-32 bg-zinc-950 animate-section">
         <div className="w-full px-6 lg:px-12">
           <div className="max-w-7xl mx-auto">
             {/* Section Header */}
             <div className="text-center mb-12 animate-item">
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#1D1D1F] text-apple-headline mb-4">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-zinc-100 mb-4">
                 Escolha seu Plano
               </h2>
-              <p className="text-lg text-[#86868B] max-w-2xl mx-auto">
+              <p className="text-lg text-zinc-400 max-w-2xl mx-auto">
                 Planos flexíveis para cada estágio do seu negócio.
               </p>
             </div>
 
             {/* Billing Toggle */}
             <div className="flex justify-center mb-12 animate-item">
-              <div className="bg-[#F5F5F7] rounded-full p-1 flex items-center">
+              <div className="bg-zinc-900 border border-zinc-800 rounded-full p-1 flex items-center">
                 <button
                   onClick={() => setIsAnnual(false)}
                   className={`px-6 py-2 rounded-full text-sm font-medium transition-all ${
                     !isAnnual 
-                      ? 'bg-white text-[#1D1D1F] shadow-sm' 
-                      : 'text-[#86868B] hover:text-[#1D1D1F]'
+                      ? 'bg-orange-600 text-white' 
+                      : 'text-zinc-400 hover:text-zinc-300'
                   }`}
                 >
                   Mensal
@@ -722,13 +753,13 @@ function App() {
                   onClick={() => setIsAnnual(true)}
                   className={`px-6 py-2 rounded-full text-sm font-medium transition-all flex items-center gap-2 ${
                     isAnnual 
-                      ? 'bg-white text-[#1D1D1F] shadow-sm' 
-                      : 'text-[#86868B] hover:text-[#1D1D1F]'
+                      ? 'bg-orange-600 text-white' 
+                      : 'text-zinc-400 hover:text-zinc-300'
                   }`}
                 >
                   Anual
-                  <span className="px-2 py-0.5 bg-[#34C759] text-white text-[10px] rounded-full">
-                    Economize 20%
+                  <span className="px-2 py-0.5 bg-emerald-600 text-white text-[10px] rounded-full">
+                    -20%
                   </span>
                 </button>
               </div>
@@ -745,10 +776,10 @@ function App() {
 
             {/* Enterprise CTA */}
             <div className="mt-12 text-center animate-item">
-              <p className="text-[#86868B] mb-4">
+              <p className="text-zinc-400 mb-4">
                 Precisa de um plano customizado para sua empresa?
               </p>
-              <button className="px-8 py-4 bg-[#1D1D1F] hover:bg-black text-white font-medium rounded-full transition-all hover:-translate-y-0.5 inline-flex items-center gap-2">
+              <button className="px-8 py-4 bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 hover:border-zinc-700 text-zinc-300 hover:text-white font-medium rounded-full transition-all hover:-translate-y-0.5 inline-flex items-center gap-2">
                 <Headphones className="w-5 h-5" />
                 Falar com Consultor
               </button>
@@ -758,30 +789,30 @@ function App() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-[#1D1D1F] py-16 lg:py-20">
+      <footer className="bg-black py-16 lg:py-20">
         <div className="w-full px-6 lg:px-12">
           <div className="max-w-6xl mx-auto">
             <div className="grid md:grid-cols-4 gap-12 mb-12">
               {/* Brand */}
               <div className="md:col-span-1">
                 <div className="flex items-center gap-2 mb-4">
-                  <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center">
-                    <span className="text-[#1D1D1F] font-bold text-sm">PG</span>
+                  <div className="w-10 h-10 rounded-xl bg-orange-600 flex items-center justify-center">
+                    <span className="text-white font-bold text-sm">PG</span>
                   </div>
                   <div className="flex flex-col">
                     <span className="font-semibold text-white text-sm">Prime Gate</span>
                     <span className="text-[10px] text-white/50">Imports</span>
                   </div>
                 </div>
-                <p className="text-white/50 text-sm mb-6">
+                <p className="text-zinc-400 text-sm mb-6">
                   O que o varejo tradicional ainda não descobriu, nós já embarcamos.
                 </p>
                 <div className="flex gap-3">
-                  <a href="#" className="w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center hover:bg-[#0071E3] transition-colors">
-                    <Linkedin className="w-5 h-5 text-white" />
+                  <a href="#" className="w-10 h-10 bg-zinc-800 rounded-xl flex items-center justify-center hover:bg-orange-600 transition-colors">
+                    <Linkedin className="w-5 h-5 text-zinc-300" />
                   </a>
-                  <a href="#" className="w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center hover:bg-[#0071E3] transition-colors">
-                    <Instagram className="w-5 h-5 text-white" />
+                  <a href="#" className="w-10 h-10 bg-zinc-800 rounded-xl flex items-center justify-center hover:bg-orange-600 transition-colors">
+                    <Instagram className="w-5 h-5 text-zinc-300" />
                   </a>
                 </div>
               </div>
@@ -814,25 +845,25 @@ function App() {
                 <h4 className="text-white font-semibold mb-4">Contato</h4>
                 <ul className="space-y-3">
                   <li className="flex items-center gap-3">
-                    <Mail className="w-5 h-5 text-[#0071E3]" />
-                    <span className="text-white/50 text-sm">contato@primegateimports.com.br</span>
+                    <Mail className="w-5 h-5 text-orange-500" />
+                    <span className="text-zinc-400 text-sm">contato@primegateimports.com.br</span>
                   </li>
                   <li className="flex items-center gap-3">
-                    <MapPin className="w-5 h-5 text-[#0071E3]" />
-                    <span className="text-white/50 text-sm">São Paulo / SP</span>
+                    <MapPin className="w-5 h-5 text-orange-500" />
+                    <span className="text-zinc-400 text-sm">São Paulo / SP</span>
                   </li>
                 </ul>
               </div>
             </div>
 
             {/* Bottom */}
-            <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
-              <p className="text-white/40 text-sm">
+            <div className="pt-8 border-t border-zinc-800 flex flex-col md:flex-row justify-between items-center gap-4">
+              <p className="text-zinc-600 text-sm">
                 © 2026 Prime Gate Imports. Todos os direitos reservados.
               </p>
               <div className="flex gap-6">
                 {['Termos', 'Privacidade', 'Cookies'].map((item) => (
-                  <a key={item} href="#" className="text-white/40 hover:text-white text-sm transition-colors">
+                  <a key={item} href="#" className="text-zinc-600 hover:text-zinc-300 text-sm transition-colors">
                     {item}
                   </a>
                 ))}

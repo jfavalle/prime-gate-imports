@@ -249,7 +249,7 @@ function Header({ scrolled, onLogin }: { scrolled: boolean; onLogin: () => void 
 }
 
 // Locked Product Card Component
-function LockedProductCard({ product }: { product: Product }) {
+function LockedProductCard({ product, onLogin }: { product: Product; onLogin: () => void }) {
   return (
     <div className="group relative bg-white border border-zinc-200 rounded-2xl overflow-hidden hover:border-zinc-300 hover:shadow-sm transition-all duration-500 hover:-translate-y-1">
       {/* Product Image */}
@@ -273,7 +273,10 @@ function LockedProductCard({ product }: { product: Product }) {
             <Lock className="w-4 h-4 text-zinc-500" />
             <span className="text-sm text-zinc-600">Faça login para ver preços e margens</span>
           </div>
-          <button className="w-full py-3 bg-orange-600 hover:bg-orange-700 text-white rounded-xl text-sm font-medium transition-all duration-300 flex items-center justify-center gap-2">
+          <button 
+            onClick={onLogin}
+            className="w-full py-3 bg-orange-600 hover:bg-orange-700 text-white rounded-xl text-sm font-medium transition-all duration-300 flex items-center justify-center gap-2"
+          >
             <Unlock className="w-4 h-4" />
             Entrar para Ver Preços
           </button>
@@ -284,13 +287,7 @@ function LockedProductCard({ product }: { product: Product }) {
 }
 
 // Pricing Card Component
-function PricingCard({ 
-  tier, 
-  isAnnual 
-}: { 
-  tier: PricingTier; 
-  isAnnual: boolean;
-}) {
+function PricingCard({ tier, isAnnual, onLogin }: { tier: PricingTier; isAnnual: boolean; onLogin: () => void }) {
   const price = isAnnual ? tier.annualPrice : tier.monthlyPrice;
   const period = isAnnual ? '/ano' : '/mês';
 
@@ -363,6 +360,7 @@ function PricingCard({
 
       {/* CTA */}
       <button 
+        onClick={onLogin}
         className={`w-full py-3 rounded-xl font-medium transition-all hover:-translate-y-0.5 ${
           tier.highlighted 
             ? 'bg-orange-600 hover:bg-orange-700 text-white' 
@@ -382,12 +380,7 @@ function App() {
   const [isAnnual, setIsAnnual] = useState(true);
   const heroRef = useRef<HTMLDivElement>(null);
 
-  // Handle login success
-  const handleLoginSuccess = () => {
-    setView('portal');
-  };
-
-  // Handle logout
+  // Logout is the only logic we keep to go back to home
   const handleLogout = () => {
     setView('home');
   };
@@ -429,11 +422,11 @@ function App() {
     return () => ctx.revert();
   }, [view]);
 
-  // Render views
+  // Render views (LoginView is bypassed, but kept here for safety)
   if (view === 'login') {
     return (
       <LoginView 
-        onLoginSuccess={handleLoginSuccess}
+        onLoginSuccess={() => setView('portal')}
         onBack={() => setView('home')}
       />
     );
@@ -445,8 +438,8 @@ function App() {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Header */}
-      <Header scrolled={scrolled} onLogin={() => setView('login')} />
+      {/* Header - Directly to Portal */}
+      <Header scrolled={scrolled} onLogin={() => setView('portal')} />
 
       {/* Hero Section */}
       <section ref={heroRef} className="relative min-h-[80vh] flex items-center pt-24 pb-24 overflow-hidden bg-white">
@@ -478,14 +471,14 @@ function App() {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center animate-slide-up">
               <button 
-                onClick={() => setView('login')}
+                onClick={() => setView('portal')}
                 className="px-8 py-4 bg-zinc-900 hover:bg-zinc-800 text-white font-medium rounded-full flex items-center justify-center gap-2"
               >
                 Começar Agora
                 <ArrowRight className="w-5 h-5" />
               </button>
               <button 
-                onClick={() => setView('login')}
+                onClick={() => setView('portal')}
                 className="px-8 py-4 bg-white text-zinc-900 font-medium rounded-full border border-zinc-300 hover:border-zinc-400 hover:bg-zinc-50 transition-all hover:-translate-y-0.5"
               >
                 Ver Produtos
@@ -540,7 +533,7 @@ function App() {
         </div>
       </section>
 
-      {/* Showcase */}
+      {/* Showcase - Clicar no botão vai pro Portal */}
       <section id="produtos" className="py-24 lg:py-32 bg-white animate-section">
         <div className="w-full px-6 lg:px-12 max-w-6xl mx-auto">
             <div className="text-center mb-16 animate-item">
@@ -552,7 +545,7 @@ function App() {
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {products.map((product) => (
                 <div key={product.id} className="animate-item">
-                  <LockedProductCard product={product} />
+                  <LockedProductCard product={product} onLogin={() => setView('portal')} />
                 </div>
               ))}
             </div>
@@ -564,13 +557,22 @@ function App() {
         <div className="max-w-6xl mx-auto px-6">
            <h2 className="text-3xl font-bold text-center mb-16">Radar de Containers</h2>
            <div className="grid md:grid-cols-4 gap-6">
-              {[85, 62, 71, 44].map((occ, i) => (
-                <div key={i} className="bg-white border p-6 rounded-xl animate-item">
+              {[
+                { route: 'Shenzhen > Santos', occupancy: 85, status: 'Fechando em 48h' },
+                { route: 'Shanghai > Rio', occupancy: 62, status: 'Zarpou' },
+                { route: 'Guangzhou > SP', occupancy: 71, status: 'Aguardando Receita' },
+                { route: 'Ningbo > Santos', occupancy: 44, status: 'Planejando Rota' },
+              ].map((container, i) => (
+                <div key={i} className="bg-white border p-6 rounded-xl animate-item flex flex-col">
                   <Container className="w-6 h-6 text-orange-600 mb-4" />
-                  <div className="h-2 bg-zinc-100 rounded-full overflow-hidden">
-                    <div className="bg-orange-600 h-full" style={{ width: `${occ}%` }} />
+                  <p className="text-sm font-semibold text-zinc-900 mb-2">{container.route}</p>
+                  <div className="h-2 bg-zinc-100 rounded-full overflow-hidden mb-2">
+                    <div className="bg-orange-600 h-full" style={{ width: `${container.occupancy}%` }} />
                   </div>
-                  <p className="text-xs mt-2 font-bold">{occ}% Ocupado</p>
+                  <div className="flex justify-between items-center mt-auto">
+                    <p className="text-xs font-bold text-zinc-900">{container.occupancy}% Ocupado</p>
+                    <span className="text-[10px] px-2 py-1 bg-zinc-100 text-zinc-600 rounded-full">{container.status}</span>
+                  </div>
                 </div>
               ))}
            </div>
@@ -583,16 +585,17 @@ function App() {
           <h2 className="text-3xl font-bold text-center mb-16">Como Funciona</h2>
           <div className="grid md:grid-cols-4 gap-8">
             {[
-              { step: '01', title: 'Escolha', icon: Package },
-              { step: '02', title: 'Cotação', icon: FileCheck },
-              { step: '03', title: 'Consolidação', icon: Container },
-              { step: '04', title: 'Entrega', icon: Truck },
+              { step: '01', title: 'Escolha', desc: 'Selecione seus produtos e volumes desejados no nosso catálogo exclusivo.', icon: Package },
+              { step: '02', title: 'Cotação', desc: 'Receba preços transparentes e detalhados em até 24 horas.', icon: FileCheck },
+              { step: '03', title: 'Consolidação', desc: 'Seus produtos são agrupados no container compartilhado.', icon: Container },
+              { step: '04', title: 'Entrega', desc: 'Receba tudo de uma vez, rastreado e com seguro incluído.', icon: Truck },
             ].map((item, i) => (
               <div key={i} className="bg-white border border-zinc-200 rounded-2xl p-8 animate-item">
                 <div className="w-12 h-12 bg-orange-600 rounded-xl flex items-center justify-center mb-4">
                     <item.icon className="w-6 h-6 text-white" />
                 </div>
                 <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
+                <p className="text-zinc-600 text-sm mb-4 h-10">{item.desc}</p>
                 <span className="text-3xl font-bold text-orange-600">{item.step}</span>
               </div>
             ))}
@@ -600,7 +603,7 @@ function App() {
         </div>
       </section>
 
-      {/* Pricing */}
+      {/* Pricing - Clicar no botão vai pro Portal */}
       <section id="precos" className="py-24 lg:py-32 bg-white animate-section">
         <div className="max-w-6xl mx-auto px-6">
             <div className="text-center mb-12 animate-item">
@@ -619,13 +622,16 @@ function App() {
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {pricingTiers.map((tier) => (
                 <div key={tier.name} className="animate-item">
-                  <PricingCard tier={tier} isAnnual={isAnnual} />
+                  <PricingCard tier={tier} isAnnual={isAnnual} onLogin={() => setView('portal')} />
                 </div>
               ))}
             </div>
 
             <div className="mt-12 text-center animate-item">
-              <button className="px-8 py-4 bg-zinc-900 hover:bg-zinc-800 text-white font-medium rounded-full inline-flex items-center gap-2">
+              <button 
+                onClick={() => setView('portal')}
+                className="px-8 py-4 bg-zinc-900 hover:bg-zinc-800 text-white font-medium rounded-full inline-flex items-center gap-2"
+              >
                 <Headphones className="w-5 h-5" />
                 Falar com Consultor
               </button>
